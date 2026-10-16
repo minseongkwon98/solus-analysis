@@ -408,7 +408,7 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <span><i style="background:var(--blue-4)"></i>바이오</span>
       <span><i style="background:var(--green)"></i>영업이익</span>
       <span><i style="background:var(--red)"></i>영업손실</span>
-      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(상단)</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(하단)</span>
     </div>
     <div class="chart-box tall"><canvas id="cYear"></canvas></div><div class="tbl mt" id="cYearT"></div>
     <p class="note">매출 = 포털 재무제표(6,160.8억 등) · 사업부 구성 = IR BOOK 기준 · 21년 바이오 포함, 22년~ 바이오 중단사업 재분류</p>
@@ -420,7 +420,7 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <span><i style="background:var(--blue)"></i>전지박</span>
       <span><i style="background:var(--blue-2)"></i>OLED</span>
       <span><i style="background:var(--red)"></i>영업손실</span>
-      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(상단)</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(하단)</span>
     </div>
     <div class="chart-box tall"><canvas id="cQtr"></canvas></div><div class="tbl mt" id="cQtrT"></div>
     <p class="note">동박 매각으로 IR이 전 분기를 계속영업 기준 재작성 · 포털 분기 수치(25.3Q~26.1Q 동박 포함 1,451~1,926억)와 기준이 달라 IR 수치 사용</p>
@@ -725,6 +725,7 @@ const labelPlugin = {
   id:'vlabels',
   afterDatasetsDraw(chart){
     const {ctx} = chart; const c = C(); const ys = chart.scales.y;
+    const opIdx = chart.data.datasets.findIndex(d=>d._label==='op'), opMeta = opIdx>=0? chart.getDatasetMeta(opIdx) : null;
     chart.data.datasets.forEach((ds,i)=>{
       const meta = chart.getDatasetMeta(i); if(meta.hidden) return;
       meta.data.forEach((el,j)=>{
@@ -740,19 +741,26 @@ const labelPlugin = {
           } else if(w<34 && h>=15){
             ctx.fillStyle = dark? '#fff' : c.ink; ctx.font='800 11px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid);
           } else {
-            ctx.fillStyle = c.ink3; ctx.textAlign='right'; ctx.font='700 11px Pretendard,sans-serif';
-            ctx.fillText(ds.label+' '+fmt(v), el.x-w/2-4, mid);
+            ctx.fillStyle = c.ink3; ctx.font='700 11px Pretendard,sans-serif';
+            const txt = ds.label+' '+fmt(v), tw = ctx.measureText(txt).width, lx = el.x-w/2-4;
+            if(lx-tw >= chart.chartArea.left){ ctx.textAlign='right'; ctx.fillText(txt, lx, mid); }
+            else { const ob = opMeta && opMeta.data[j]; ctx.textAlign='left'; ctx.fillText(txt, ob? ob.x+ob.width/2+4 : el.x+w/2+4, mid); }
           }
-          if(ds._top){ const tv = ds._totals[j]; const ty = ys.getPixelForValue(tv);
-            ctx.textAlign='center'; ctx.fillStyle=c.blue; ctx.font='800 13px Pretendard,sans-serif'; ctx.fillText(fmt(Math.round(tv)), el.x, ty-11); }
         } else if(ds._label==='op'){
           ctx.font='800 12px Pretendard,sans-serif'; ctx.fillStyle = v>=0?c.green:c.red; ctx.fillText(fmt(Math.round(v)), el.x, v>=0? el.y-10 : el.y+11);
         } else if(ds._label==='pct'){
-          ctx.fillStyle=c.ink; ctx.font='700 11.5px Pretendard,sans-serif'; ctx.fillText(v.toFixed(1)+'%', el.x, el.y-13);
+          ctx.fillStyle=v<0?c.red:c.ink; ctx.font='700 11.5px Pretendard,sans-serif'; ctx.fillText(v.toFixed(1)+'%', el.x, el.y-13);
         }
         ctx.restore();
       });
     });
+    /* 매출 합계: 최상단 세그먼트가 비어 있어도(바이오 등) 모든 연도에 표시 */
+    const first = chart.data.datasets[0];
+    if(first && first._totals){ const m0 = chart.getDatasetMeta(0);
+      first._totals.forEach((tv,j)=>{ const el = m0.data[j]; if(!el || tv==null) return;
+        ctx.save(); ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle=c.blue; ctx.font='800 13px Pretendard,sans-serif';
+        ctx.fillText(fmt(Math.round(tv)), el.x, ys.getPixelForValue(tv)-11); ctx.restore(); });
+    }
   }
 };
 
@@ -762,7 +770,7 @@ function finChart(id, labels, segs, op, total){
   const segColors = [c.blue,c.b2,c.b3,c.b4], darkSeg=[true,false,false,false];
   const bar = {barPercentage:.82,categoryPercentage:.62,maxBarThickness:64};
   const ds = segs.map((s,k)=>({type:'bar',label:s.name,data:s.data,backgroundColor:segColors[k],stack:'rev',yAxisID:'y',borderRadius:0,_seg:true,_dark:darkSeg[k],...bar}));
-  ds[ds.length-1]._top=true; ds[ds.length-1]._totals=total;
+  ds[0]._totals=total;
   ds.push({type:'bar',label:'영업이익',data:op,backgroundColor:op.map(v=>v>=0?c.green:c.red),stack:'op',yAxisID:'y',borderRadius:2,_label:'op',...bar});
   ds.push({type:'line',label:'영업이익률',data:margin,yAxisID:'y2',borderColor:c.ink,backgroundColor:c.card,borderWidth:2,pointRadius:4,pointBorderWidth:2,tension:.25,_label:'pct',order:-1});
   const maxT = Math.max(...total), minO = Math.min(0,...op);
@@ -775,8 +783,8 @@ function finChart(id, labels, segs, op, total){
       plugins:{legend:{display:false},tooltip:{filter:t=>t.raw!=null,callbacks:{label:t=> t.dataset.label+' '+(t.dataset.yAxisID==='y2'? t.raw.toFixed(1)+'%' : fmt(Math.round(t.raw))+'억')}}},
       scales:{
         x:{stacked:true,grid:{display:false},ticks:{color:c.ink3,font:{weight:700,size:13}}},
-        y:{stack:'s',stackWeight:4,stacked:true,grid:{color:c.line},min:Math.floor(minO*1.35/step)*step,max:Math.ceil(maxT*1.12/step)*step,ticks:{color:c.ink4,stepSize:step,callback:v=>fmt(v)}},
-        y2:{stack:'s',stackWeight:1.1,offset:true,position:'left',grid:{display:false},border:{display:false},ticks:{display:false},min:Math.min(...margin)-12,max:Math.max(...margin)+16}
+        y2:{stack:'s',stackWeight:1.1,offset:true,position:'left',grid:{display:false},border:{display:false},ticks:{display:false},min:Math.min(...margin)-6,max:Math.max(...margin)+10},
+        y:{stack:'s',stackWeight:4,stacked:true,grid:{color:c.line},min:Math.floor(minO*1.35/step)*step,max:Math.ceil(maxT*1.12/step)*step,ticks:{color:c.ink4,stepSize:step,callback:v=>fmt(v)}}
       }}
   });
   // data table
