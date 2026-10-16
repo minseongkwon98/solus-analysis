@@ -112,6 +112,7 @@ ul.dot li b{color:var(--ink)}
 
 /* charts */
 .chart-box{position:relative;height:340px}
+.chart-box.tall{height:460px}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-bottom:10px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 .legend i.ln{height:2px;width:14px;border-radius:0;vertical-align:3px}
@@ -195,7 +196,7 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
   .oneliner .big{font-size:18px}
   .spin{grid-template-columns:1fr}
   .spin .ar{transform:rotate(90deg);text-align:center}
-  .chart-box{height:280px}
+  .chart-box{height:280px} .chart-box.tall{height:420px}
 }
 </style>
 </head>
@@ -209,8 +210,8 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <a href="#s2">재무분석</a>
       <a href="#s3">26년 2분기 실적</a>
       <a href="#s4">주요 사업</a>
-      <a href="#s5">최근 이슈</a>
-      <a href="#s6">주가</a>
+      <a href="#s5">주가</a>
+      <a href="#s6">최근 이슈</a>
     </nav>
   </div>
 </header>
@@ -253,9 +254,9 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <div class="spin">
         <div class="box"><b>㈜두산</b><span>전자BG · 소재 사업 보유</span></div>
         <div class="ar">→</div>
-        <div class="box hl"><b>두산솔루스</b><span>2019.10.01 인적분할 신설<br>전지박·동박·OLED·바이오</span></div>
+        <div class="box hl"><b>두산솔루스</b><span>2019.10.01 인적분할 신설<br>전자BG(OLED·동박) + 바이오BU</span></div>
         <div class="ar">→</div>
-        <div class="box"><b>솔루스첨단소재</b><span>스카이레이크 인수 후<br>사명 변경</span></div>
+        <div class="box"><b>솔루스첨단소재</b><span>2020.12.14<br>스카이레이크 인수 · 사명 변경</span></div>
       </div>
       <ul class="dot mt" id="spinList">
         <li><b>목적</b> 전지박·동박·전자소재 사업 전문화 · 독립 경영 · 성장 투자 재원 확보</li>
@@ -275,8 +276,8 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
         <div class="it"><div class="y">2010</div><div class="t">OLED 사업 착수 · 익산 공장</div></div>
         <div class="it"><div class="y">2014</div><div class="t"><b>HBL(정공방어층)</b> 양산 공급 개시 → 이후 시장 지배</div></div>
         <div class="it k"><div class="y">2019</div><div class="t">㈜두산 인적분할 → <b>두산솔루스</b> 코스피 상장 · 헝가리 1공장 착공</div></div>
-        <div class="it k"><div class="y">2020</div><div class="t">PEF <b>스카이레이크</b> 경영권 인수 (지분 53% · 6,986억)</div></div>
-        <div class="it"><div class="y">2021</div><div class="t">헝가리 1공장 양산 · <b>솔루스첨단소재</b> 사명 변경</div></div>
+        <div class="it k"><div class="y">2020</div><div class="t">PEF <b>스카이레이크</b> 인수 (6,986억) · 12.14 <b>솔루스첨단소재</b> 사명 변경</div></div>
+        <div class="it"><div class="y">2021</div><div class="t">헝가리 1공장 양산 · 바이오 물적분할(솔루스바이오텍)</div></div>
         <div class="it"><div class="y">2023</div><div class="t">캐나다 퀘벡 공장 착공 · 바이오(솔루스바이오텍) 크로다에 매각</div></div>
         <div class="it"><div class="y">2024</div><div class="t">헝가리 2공장 양산 · CATL 공급계약</div></div>
         <div class="it"><div class="y">2025</div><div class="t">ACC 2차 공급계약 · 차세대 ETL 양산 · <b>그린인광호스트</b> 승인</div></div>
@@ -318,32 +319,35 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
 @media (max-width:600px){ .branch{grid-template-columns:1fr} .sub2{grid-template-columns:1fr} .tn{min-width:0;width:100%} }
 </style>
 <div class="card mt">
-  <h3>지분구조 · 종속회사 <span class="sub">26.06 IR BOOK · 언론 보도 기준</span></h3>
+  <h3>지분구조 · 종속회사 <span class="sub">26.06.30 반기보고서 기준 · 보통주 의결권 기준</span></h3>
   <div class="own">
     <div>
-      <div class="donut"><canvas id="cOwn"></canvas><div class="c"><div><b>53.3%</b><span>스카이레이크 측</span></div></div></div>
+      <div class="donut"><canvas id="cOwn"></canvas><div class="c"><div><b>53.3%</b><span>최대주주 측</span></div></div></div>
       <div class="shl">
-        <div><i style="background:var(--blue)"></i>스카이레이크롱텀스트래티직인베스트먼트 외 3인<b>53.3%</b></div>
-        <div><i style="background:var(--blue-3)"></i>소액주주 (약 7.4만명)<b>45.3%</b></div>
-        <div><i style="background:var(--line)"></i>기타<b>1.4%</b></div>
+        <div><i style="background:var(--blue)"></i>스카이레이크롱텀스트래티직인베스트먼트<b>53.16%</b></div>
+        <div><i style="background:var(--blue-2)"></i>특수관계인 (진대제·곽근만 등)<b>0.15%</b></div>
+        <div><i style="background:var(--blue-3)"></i>소액주주 (65,034명)<b>45.02%</b></div>
+        <div><i style="background:var(--line)"></i>기타<b>1.67%</b></div>
       </div>
-      <p class="note">최대주주 = 스카이레이크(진대제 회장) PEF가 세운 인수 SPC · 인수 당시 롯데정밀화학 2,900억 FI 출자 · 우선주 솔루스첨단소재1우(33637K) 별도 상장</p>
+      <p class="note">우선주(1우 · 2,069만주) 포함 총발행주식 기준이면 최대주주 측 <b>41.18%</b> · 5% 이상 주주는 최대주주 외 없음(국민연금 X) · 자사주 7,122주 26.7.30 전량 소각</p>
     </div>
     <div class="tree">
-      <div class="tn pe"><b>스카이레이크에쿼티파트너스</b><span>PEF 운용사 · 2020 두산서 인수</span></div>
+      <div class="tn pe"><b>스카이레이크에쿼티파트너스</b><span>PEF 운용사(GP) · 진대제 회장 설립</span></div>
       <div class="vl"></div>
-      <div class="tn pe"><b>스카이레이크롱텀스트래티직인베스트먼트</b><span>인수 SPC · 최대주주</span></div>
+      <div class="tn pe"><b>스카이스크래퍼롱텀스트래티직 PEF 외 2</b><span>SPC 출자자 · 기관전용 사모펀드</span></div>
+      <div class="vl"></div>
+      <div class="tn pe"><b>스카이레이크롱텀스트래티직인베스트먼트</b><span>인수 SPC · 부채 1,468억 · 솔루스 외 보유지분 없음</span></div>
       <div class="vl"></div><span class="pct">53.3%</span><div class="vl"></div>
       <div class="tn me"><b>솔루스첨단소재㈜</b><span>KOSPI 336370 · OLED 소재 직영 (분당 R&D · 익산 생산)</span></div>
       <div class="vl"></div>
       <div class="branch">
         <div>
-          <span class="pct">54.31%</span>
-          <div class="tn"><b>Volta Energy Solutions S.à r.l.</b><span>🇱🇺 룩셈부르크 · 전지박 중간지주</span><span class="flag">나머지 ≈ 스카이레이크 펀드 40% + LG엔솔 5%</span></div>
+          <span class="pct">59.55%</span>
+          <div class="tn"><b>Volta Energy Solutions S.à r.l.</b><span>🇱🇺 룩셈부르크 · 전지박 중간지주</span><span class="flag">비지배 40.45% (스카이레이크 펀드) · 25말 54.31%</span></div>
           <div class="sub2">
-            <div><span class="pct">100%</span><div class="tn hu"><b>VES Europe Kft.</b><span>🇭🇺 유럽 통합법인 · 판매</span></div>
+            <div><span class="pct">100%</span><div class="tn hu"><b>VES Europe Kft.</b><span>🇭🇺 유럽 지주 · 판매</span></div>
               <div class="vl"></div><span class="pct">100%</span>
-              <div class="tn hu"><b>VES Hungary Kft.</b><span>🇭🇺 터터바냐 공장 · 생산 3.8만t</span></div></div>
+              <div class="tn hu"><b>VES Hungary Kft.</b><span>🇭🇺 터터바냐 공장 · 26.1H 순이익 +77억</span></div></div>
             <div><span class="pct">100%</span><div class="tn"><b>VES Canada Inc.</b><span>🇨🇦 퀘벡 · 27년 양산 목표</span></div></div>
             <div><span class="pct">매각</span><div class="tn sold"><b>Circuit Foil Lux.</b><span>🇱🇺 동박 · 26.4 스카이레이크 펀드에 약 3,000억 매각</span></div></div>
           </div>
@@ -355,7 +359,8 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
   </div>
   <ul class="dot mt">
     <li><b>헝가리 2개 법인</b> VES Europe(유럽 통합·판매·자금 창구) → VES Hungary(실제 공장) 구조 · 26.1 헝가리 법인 587억 증자 · 26.5 CFL 매각대금 약 400억 추가 출자</li>
-    <li><b>VES 지분 확대 추진</b> 26.4 LG에너지솔루션 보유 VES 지분 784억에 인수 결의 → 완료 시 솔루스 59.55% · 스카이레이크 펀드 40.45%</li>
+    <li><b>VES 지분 확대</b> LG에너지솔루션 보유 VES 지분 784억에 인수 → 54.31% → <b>59.55%</b> (26.06 반영 완료)</li>
+    <li><b>헝가리 가동률</b> 24년 82.2% → 25년 63.3% → 26.1H 58.0% (반기 평균) · 2Q 단독 73%로 회복 중</li>
     <li><b>이해상충 체크</b> 동박(CFL)·전지박(VES) 모두 최대주주 측 펀드가 거래 상대 · 소액주주 관점 주의</li>
   </ul>
 </div>
@@ -403,9 +408,9 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <span><i style="background:var(--blue-4)"></i>바이오</span>
       <span><i style="background:var(--green)"></i>영업이익</span>
       <span><i style="background:var(--red)"></i>영업손실</span>
-      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(우)</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(상단)</span>
     </div>
-    <div class="chart-box"><canvas id="cYear"></canvas></div>
+    <div class="chart-box tall"><canvas id="cYear"></canvas></div><div class="tbl mt" id="cYearT"></div>
     <p class="note">매출 = 포털 재무제표(6,160.8억 등) · 사업부 구성 = IR BOOK 기준 · 21년 바이오 포함, 22년~ 바이오 중단사업 재분류</p>
   </div>
 
@@ -415,9 +420,9 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       <span><i style="background:var(--blue)"></i>전지박</span>
       <span><i style="background:var(--blue-2)"></i>OLED</span>
       <span><i style="background:var(--red)"></i>영업손실</span>
-      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(우)</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(상단)</span>
     </div>
-    <div class="chart-box"><canvas id="cQtr"></canvas></div>
+    <div class="chart-box tall"><canvas id="cQtr"></canvas></div><div class="tbl mt" id="cQtrT"></div>
     <p class="note">동박 매각으로 IR이 전 분기를 계속영업 기준 재작성 · 포털 분기 수치(25.3Q~26.1Q 동박 포함 1,451~1,926억)와 기준이 달라 IR 수치 사용</p>
   </div>
 
@@ -473,6 +478,40 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
       </tbody>
     </table>
     </div>
+  </div>
+
+  <div class="card mt" style="border-color:var(--blue)">
+    <h3>📌 동박사업(CFL) 매각 · 왜 중요한가 <span class="sub">반기보고서 · 언론 보도</span></h3>
+    <div class="grid g3">
+      <div>
+        <span class="pill k">무엇을</span>
+        <ul class="dot mt">
+          <li>룩셈부르크 <b>Circuit Foil Luxembourg</b> + 중국·홍콩·미국 자회사 3곳</li>
+          <li>PCB·AI 서버용 <b>회로박(IT 동박)</b> 사업 · 1960년 설립 모태 법인</li>
+          <li>25년 매출 약 3,061억 = <b>전사 매출 절반</b></li>
+          <li>25.1H 매출 1,332억 · 순이익 151억 = <b>흑자 사업</b></li>
+        </ul>
+      </div>
+      <div>
+        <span class="pill k">경과</span>
+        <ul class="dot mt">
+          <li><b>25.07</b> 중국 업체에 2,784억 매각 계약</li>
+          <li><b>→</b> 룩셈부르크 외국인투자(FDI) 심사 문턱 · 기한 내 미종결로 해제</li>
+          <li><b>26.01.20</b> 이사회 재의결 · 스카이레이크 펀드 대상 약 3,014억</li>
+          <li><b>26.04.28</b> 매각 완료 · 종속회사 10개 → 6개</li>
+        </ul>
+      </div>
+      <div>
+        <span class="pill k">왜 팔았나 · 영향</span>
+        <ul class="dot mt">
+          <li><b>이유</b> 전지박 집중 + 차입 부담(순차입금 8천억·부채비율 128%) + 캐나다 투자 재원</li>
+          <li><b>매출</b> 6,161억(25) → 계속영업 3,100억 · 외형 반토막</li>
+          <li><b>순이익</b> 26.2Q 중단영업이익 887억 일회성 흑자</li>
+          <li><b>체크</b> 이익 내던 사업을 최대주주 측 펀드가 인수 · 가격 적정성 관전 포인트</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">결론 · 이제 남은 건 적자 전지박 + 흑자 OLED 두 개 · 전지박 흑자전환 여부가 회사 가치를 좌우</p>
   </div>
 </section>
 
@@ -626,16 +665,9 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
   </div>
 </section>
 
-<!-- 05 최근 이슈 -->
+<!-- 05 주가 -->
 <section id="s5">
-  <div class="sec-h"><span class="no">05</span><h2>최근 이슈</h2><p>2025.01 ~ 2026.10 · 카드 클릭 시 원문 이동</p></div>
-  <div class="months" id="monthBtns"></div>
-  <div id="newsList"></div>
-</section>
-
-<!-- 06 주가 -->
-<section id="s6">
-  <div class="sec-h"><span class="no">06</span><h2>주가</h2><p>2025.01.02 ~ 2026.10.16 · 일별 종가 · 출처 네이버 금융</p></div>
+  <div class="sec-h"><span class="no">05</span><h2>주가</h2><p>2025.01.02 ~ 2026.10.16 · 일별 종가 · 출처 네이버 금융</p></div>
 
   <div class="kpi4" id="pxKpi"></div>
 
@@ -662,6 +694,13 @@ footer .wrap{border-top:1px solid var(--line);padding-top:20px}
   </div>
 </section>
 
+<!-- 06 최근 이슈 -->
+<section id="s6">
+  <div class="sec-h"><span class="no">06</span><h2>최근 이슈</h2><p>2025.01 ~ 2026.10 · 카드 클릭 시 원문 이동</p></div>
+  <div class="months" id="monthBtns"></div>
+  <div id="newsList"></div>
+</section>
+
 </main>
 
 <footer><div class="wrap">
@@ -685,17 +724,32 @@ function C(){ return {blue:css('--blue'),b2:css('--blue-2'),b3:css('--blue-3'),b
 const labelPlugin = {
   id:'vlabels',
   afterDatasetsDraw(chart){
-    const {ctx} = chart; const c = C();
+    const {ctx} = chart; const c = C(); const ys = chart.scales.y;
     chart.data.datasets.forEach((ds,i)=>{
-      if(!ds._label) return;
       const meta = chart.getDatasetMeta(i); if(meta.hidden) return;
       meta.data.forEach((el,j)=>{
-        const v = ds._label === 'total' ? ds._totals[j] : ds.data[j];
-        if(v==null) return;
-        ctx.save(); ctx.font='700 11.5px Pretendard,sans-serif'; ctx.textAlign='center';
-        if(ds._label==='total'){ ctx.fillStyle=c.ink; ctx.fillText(fmt(Math.round(v)), el.x, el.y-6); }
-        else if(ds._label==='op'){ ctx.fillStyle = v>=0?c.green:c.red; ctx.fillText(fmt(Math.round(v)), el.x, v>=0? el.y-6 : el.y+14); }
-        else if(ds._label==='pct'){ ctx.fillStyle=c.ink; ctx.font='600 11px Pretendard,sans-serif'; ctx.fillText(v.toFixed(1)+'%', el.x, el.y-9); }
+        const v = ds.data[j]; if(v==null) return;
+        ctx.save(); ctx.textAlign='center'; ctx.textBaseline='middle';
+        if(ds._seg){
+          const h = Math.abs(el.base-el.y), mid=(el.y+el.base)/2, w=el.width;
+          const dark = ds._dark;
+          if(h>=30 && w>=46){
+            ctx.fillStyle = dark? '#fff' : c.ink;
+            ctx.font='600 10.5px Pretendard,sans-serif'; ctx.fillText(ds.label, el.x, mid-7);
+            ctx.font='800 12px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid+7);
+          } else if(w<34 && h>=15){
+            ctx.fillStyle = dark? '#fff' : c.ink; ctx.font='800 11px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid);
+          } else {
+            ctx.fillStyle = c.ink3; ctx.textAlign='right'; ctx.font='700 11px Pretendard,sans-serif';
+            ctx.fillText(ds.label+' '+fmt(v), el.x-w/2-4, mid);
+          }
+          if(ds._top){ const tv = ds._totals[j]; const ty = ys.getPixelForValue(tv);
+            ctx.textAlign='center'; ctx.fillStyle=c.blue; ctx.font='800 13px Pretendard,sans-serif'; ctx.fillText(fmt(Math.round(tv)), el.x, ty-11); }
+        } else if(ds._label==='op'){
+          ctx.font='800 12px Pretendard,sans-serif'; ctx.fillStyle = v>=0?c.green:c.red; ctx.fillText(fmt(Math.round(v)), el.x, v>=0? el.y-10 : el.y+11);
+        } else if(ds._label==='pct'){
+          ctx.fillStyle=c.ink; ctx.font='700 11.5px Pretendard,sans-serif'; ctx.fillText(v.toFixed(1)+'%', el.x, el.y-13);
+        }
         ctx.restore();
       });
     });
@@ -705,23 +759,30 @@ const labelPlugin = {
 function finChart(id, labels, segs, op, total){
   const c = C();
   const margin = op.map((v,i)=> v/total[i]*100);
-  const segColors = [c.blue,c.b2,c.b3,c.b4];
-  const ds = segs.map((s,k)=>({type:'bar',label:s.name,data:s.data,backgroundColor:segColors[k],stack:'rev',yAxisID:'y',borderRadius:2,barPercentage:.9,categoryPercentage:.7}));
-  ds[ds.length-1]._label='total'; ds[ds.length-1]._totals=total;
-  ds.push({type:'bar',label:'영업이익',data:op,backgroundColor:op.map(v=>v>=0?c.green:c.red),stack:'op',yAxisID:'y',borderRadius:2,barPercentage:.9,categoryPercentage:.7,_label:'op'});
+  const segColors = [c.blue,c.b2,c.b3,c.b4], darkSeg=[true,false,false,false];
+  const bar = {barPercentage:.82,categoryPercentage:.62,maxBarThickness:64};
+  const ds = segs.map((s,k)=>({type:'bar',label:s.name,data:s.data,backgroundColor:segColors[k],stack:'rev',yAxisID:'y',borderRadius:0,_seg:true,_dark:darkSeg[k],...bar}));
+  ds[ds.length-1]._top=true; ds[ds.length-1]._totals=total;
+  ds.push({type:'bar',label:'영업이익',data:op,backgroundColor:op.map(v=>v>=0?c.green:c.red),stack:'op',yAxisID:'y',borderRadius:2,_label:'op',...bar});
   ds.push({type:'line',label:'영업이익률',data:margin,yAxisID:'y2',borderColor:c.ink,backgroundColor:c.card,borderWidth:2,pointRadius:4,pointBorderWidth:2,tension:.25,_label:'pct',order:-1});
-  return new Chart(document.getElementById(id),{
+  const maxT = Math.max(...total), minO = Math.min(0,...op);
+  const step = maxT>3000? 1000 : 250;
+  new Chart(document.getElementById(id),{
     data:{labels,datasets:ds},
     plugins:[labelPlugin],
     options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-      layout:{padding:{top:18}},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:t=> t.dataset.label+' '+(t.dataset.yAxisID==='y2'? t.raw.toFixed(1)+'%' : fmt(Math.round(t.raw))+'억')}}},
+      layout:{padding:{top:4}},
+      plugins:{legend:{display:false},tooltip:{filter:t=>t.raw!=null,callbacks:{label:t=> t.dataset.label+' '+(t.dataset.yAxisID==='y2'? t.raw.toFixed(1)+'%' : fmt(Math.round(t.raw))+'억')}}},
       scales:{
-        x:{stacked:true,grid:{display:false},ticks:{color:c.ink3,font:{weight:600}}},
-        y:{stacked:true,grid:{color:c.line},ticks:{color:c.ink4,callback:v=>fmt(v)},title:{display:true,text:'억원',color:c.ink4}},
-        y2:{position:'right',grid:{display:false},ticks:{color:c.ink4,callback:v=>v+'%'},suggestedMin:-60,suggestedMax:20}
+        x:{stacked:true,grid:{display:false},ticks:{color:c.ink3,font:{weight:700,size:13}}},
+        y:{stack:'s',stackWeight:4,stacked:true,grid:{color:c.line},min:Math.floor(minO*1.35/step)*step,max:Math.ceil(maxT*1.12/step)*step,ticks:{color:c.ink4,stepSize:step,callback:v=>fmt(v)}},
+        y2:{stack:'s',stackWeight:1.1,offset:true,position:'left',grid:{display:false},border:{display:false},ticks:{display:false},min:Math.min(...margin)-12,max:Math.max(...margin)+16}
       }}
   });
+  // data table
+  const T = document.getElementById(id+'T'); if(!T) return;
+  const rows = segs.map(s=>[s.name, s.data]).concat([['매출 합계', total, 'hl'],['영업이익', op, 'op'],['영업이익률', margin, 'pct']]);
+  T.innerHTML = `<table><thead><tr><th>억원</th>${labels.map(l=>`<th>${l}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr class="${r[2]==='hl'?'hl':''}"><td>${r[0]}</td>${r[1].map(v=> v==null?'<td>-</td>': r[2]==='pct'? `<td class="${v<0?'dn':'up'}">${v.toFixed(1)}%</td>` : `<td class="${r[2]==='op'?(v<0?'dn':'up'):''}">${fmt(Math.round(v))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 
 /* annual: revenue from portal (bio incl. 2021), segment split from IR */
@@ -738,7 +799,7 @@ finChart('cQtr',['25.2Q','25.3Q','25.4Q','26.1Q','26.2Q'],[
 ],[-208,-113,-287,-324,-213],[778,685,742,881,1019]);
 
 /* ownership donut */
-(function(){ const c=C(); new Chart(document.getElementById('cOwn'),{type:'doughnut',data:{labels:['스카이레이크 측','소액주주','기타'],datasets:[{data:[53.3,45.3,1.4],backgroundColor:[c.blue,c.b3,css('--line')],borderColor:c.card,borderWidth:3}]},options:{cutout:'68%',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:t=>t.label+' '+t.raw+'%'}}}}}); })();
+(function(){ const c=C(); new Chart(document.getElementById('cOwn'),{type:'doughnut',data:{labels:['최대주주','특수관계인','소액주주','기타'],datasets:[{data:[53.16,0.15,45.02,1.67],backgroundColor:[c.blue,c.b2,c.b3,css('--line')],borderColor:c.card,borderWidth:3}]},options:{cutout:'68%',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:t=>t.label+' '+t.raw+'%'}}}}}); })();
 
 /* ---------- news ---------- */
 (function(){
