@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>솔루스첨단소재 기업분석</title>
+<meta name="description" content="솔루스첨단소재(336370) 회사소개 · 재무분석 · 26년 2분기 실적 · 주요 사업 · 최근 이슈 · 주가">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --blue:#0F80F6; --blue-d:#0B5FC2; --blue-2:#6FB1FA; --blue-3:#B8D7FC; --blue-4:#DCE7F3; --blue-bg:#EEF5FF;
+  --green:#12B76A; --red:#F04438; --amber:#F79009;
+  --ink:#191919; --ink2:#333; --ink3:#545454; --ink4:#767676; --line:#E3E3E3; --line2:#F0F0F0;
+  --bg:#F4F5F7; --card:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --blue:#4A9DFF; --blue-d:#7DB8FF; --blue-2:#2F6FBF; --blue-3:#244F85; --blue-4:#3A4656; --blue-bg:#16263D;
+    --green:#32D583; --red:#F97066; --ink:#F2F4F7; --ink2:#D0D5DD; --ink3:#AEB4BD; --ink4:#8A919B;
+    --line:#2E333A; --line2:#24282E; --bg:#0F1114; --card:#181B20;
+  }
+}
+:root[data-theme="dark"]{
+  --blue:#4A9DFF; --blue-d:#7DB8FF; --blue-2:#2F6FBF; --blue-3:#244F85; --blue-4:#3A4656; --blue-bg:#16263D;
+  --green:#32D583; --red:#F97066; --ink:#F2F4F7; --ink2:#D0D5DD; --ink3:#AEB4BD; --ink4:#8A919B;
+  --line:#2E333A; --line2:#24282E; --bg:#0F1114; --card:#181B20;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* top bar */
+.gnb{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line)}
+.gnb .wrap{display:flex;align-items:center;gap:24px;height:56px}
+.logo{font-weight:800;font-size:17px;letter-spacing:-.3px;white-space:nowrap}
+.logo b{color:var(--blue)}
+.gnb nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.gnb nav::-webkit-scrollbar{display:none}
+.gnb nav a{padding:6px 12px;border-radius:999px;font-size:14px;font-weight:600;color:var(--ink3);white-space:nowrap}
+.gnb nav a:hover,.gnb nav a.on{background:var(--blue-bg);color:var(--blue)}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#0B5FC2 0%,#0F80F6 60%,#4FA3FF 100%);color:#fff;padding:56px 0 48px}
+.hero .tag{display:inline-block;font-size:13px;font-weight:600;background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-size:40px;font-weight:800;letter-spacing:-1px;line-height:1.25}
+.hero h1 small{font-size:18px;font-weight:500;opacity:.8;margin-left:8px;letter-spacing:0}
+.hero p.lead{font-size:19px;margin-top:12px;opacity:.95;font-weight:500}
+.hero .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:32px}
+.hero .kpi{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px 16px}
+.hero .kpi span{display:block;font-size:12px;opacity:.8}
+.hero .kpi b{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* section */
+section{padding:56px 0 8px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.sec-h .no{font-size:14px;font-weight:800;color:var(--blue)}
+.sec-h h2{font-size:26px;font-weight:800;letter-spacing:-.5px}
+.sec-h p{font-size:14px;color:var(--ink4);margin-left:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card h3{font-size:17px;font-weight:700;margin-bottom:12px;letter-spacing:-.2px}
+.card h3 .sub{font-size:13px;font-weight:500;color:var(--ink4);margin-left:6px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+.mt{margin-top:16px}
+ul.dot{list-style:none}
+ul.dot li{position:relative;padding-left:14px;font-size:15px;color:var(--ink2);margin:5px 0}
+ul.dot li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+ul.dot li b{color:var(--ink)}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--blue-bg);color:var(--blue)}
+.pill.g{background:rgba(18,183,106,.12);color:var(--green)}
+.pill.r{background:rgba(240,68,56,.12);color:var(--red)}
+.pill.a{background:rgba(247,144,9,.14);color:var(--amber)}
+.pill.k{background:var(--line2);color:var(--ink3)}
+.up{color:var(--green)} .dn{color:var(--red)}
+.num{font-variant-numeric:tabular-nums}
+.note{font-size:12.5px;color:var(--ink4);margin-top:10px}
+
+/* company */
+.oneliner{display:flex;gap:20px;align-items:center}
+.oneliner .big{font-size:22px;font-weight:800;letter-spacing:-.4px;line-height:1.45}
+.oneliner .big em{font-style:normal;color:var(--blue)}
+.biz2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.biz2 div{border-radius:12px;padding:16px;background:var(--blue-bg)}
+.biz2 div b{display:block;font-size:16px;color:var(--blue);margin-bottom:4px}
+.biz2 div span{font-size:14px;color:var(--ink2)}
+.spin{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-top:8px}
+.spin .box{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--card)}
+.spin .box b{display:block;font-size:15px}
+.spin .box span{font-size:12.5px;color:var(--ink4)}
+.spin .box.hl{border-color:var(--blue);background:var(--blue-bg)}
+.spin .ar{color:var(--blue);font-weight:800;font-size:20px}
+
+.tl{position:relative;margin-top:4px}
+.tl::before{content:"";position:absolute;left:58px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .it{display:grid;grid-template-columns:48px 1fr;gap:22px;padding:7px 0;position:relative}
+.tl .it::after{content:"";position:absolute;left:54px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--blue)}
+.tl .it.k::after{background:var(--blue)}
+.tl .y{font-weight:800;font-size:14px;color:var(--blue);text-align:right;padding-top:2px}
+.tl .t{font-size:14.5px;color:var(--ink2)}
+.tl .t b{color:var(--ink)}
+
+.org{display:flex;flex-direction:column;gap:10px;font-size:13.5px}
+.org .row{display:flex;gap:8px;flex-wrap:wrap}
+.org .n{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--card)}
+.org .n b{display:block;font-size:13.5px}
+.org .n span{color:var(--ink4);font-size:12px}
+.org .n.top{background:var(--blue);color:#fff;border-color:var(--blue)}
+.org .n.top span{color:rgba(255,255,255,.8)}
+
+/* charts */
+.chart-box{position:relative;height:340px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink3);margin-bottom:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.legend i.ln{height:2px;width:14px;border-radius:0;vertical-align:3px}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-weight:700;color:var(--ink3);background:var(--line2);border-bottom:1px solid var(--line)}
+tbody tr.hl td{font-weight:700;background:var(--blue-bg)}
+.tbl{overflow-x:auto}
+
+.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kt{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
+.kt span{font-size:13px;color:var(--ink4)}
+.kt b{display:block;font-size:26px;font-weight:800;letter-spacing:-.5px;margin:2px 0}
+.kt em{font-style:normal;font-size:12.5px;font-weight:600}
+
+.point{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2)}
+.point:last-child{border-bottom:0}
+.point .ic{flex:none;width:28px;height:28px;border-radius:8px;background:var(--blue-bg);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:13px}
+.point b{display:block;font-size:15px}
+.point span{font-size:14px;color:var(--ink3)}
+
+.bar{height:8px;border-radius:99px;background:var(--line2);overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}
+
+/* news */
+.months{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.months button{border:1px solid var(--line);background:var(--card);color:var(--ink3);font:inherit;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;cursor:pointer}
+.months button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.mgroup{margin-bottom:22px}
+.mgroup h4{font-size:15px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.mgroup h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ncard{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;transition:.15s}
+a.ncard:hover{border-color:var(--blue);box-shadow:0 6px 20px rgba(15,128,246,.12);transform:translateY(-2px)}
+.ncard .top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink4)}
+.ncard b{font-size:15.5px;letter-spacing:-.2px;line-height:1.4}
+.ncard p{font-size:13.5px;color:var(--ink3)}
+.ncard .src{margin-top:auto;font-size:12px;color:var(--blue);font-weight:600}
+
+/* stock */
+.moves{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mv{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card)}
+.mv .chg{flex:none;min-width:70px;text-align:center;font-weight:800;font-size:16px;border-radius:10px;padding:8px 6px}
+.mv .chg.u{background:rgba(18,183,106,.12);color:var(--green)}
+.mv .chg.d{background:rgba(240,68,56,.12);color:var(--red)}
+.mv .chg small{display:block;font-size:11px;font-weight:600;opacity:.85}
+.mv b{font-size:14.5px}
+.mv p{font-size:13.5px;color:var(--ink3)}
+.mv a{font-size:12px;color:var(--blue);font-weight:600}
+.rng{display:flex;gap:6px}
+.rng button{border:1px solid var(--line);background:var(--card);color:var(--ink3);font:inherit;font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:8px;cursor:pointer}
+.rng button.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+details summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::before{content:"▸";color:var(--blue);transition:.15s}
+details[open] summary::before{transform:rotate(90deg)}
+.daily{max-height:460px;overflow:auto;margin-top:14px;border:1px solid var(--line);border-radius:10px}
+.daily thead th{position:sticky;top:0}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--blue);color:var(--blue);background:transparent;font:inherit;font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer}
+
+footer{padding:48px 0 40px;font-size:12.5px;color:var(--ink4)}
+footer .wrap{border-top:1px solid var(--line);padding-top:20px}
+
+@media (max-width:900px){
+  .hero .kpis{grid-template-columns:repeat(3,1fr)}
+  .g3,.g4,.ncards,.kpi4{grid-template-columns:repeat(2,1fr)}
+  .g2,.moves{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .hero{padding:40px 0 32px}
+  .hero h1{font-size:30px} .hero h1 small{display:block;margin:4px 0 0}
+  .hero p.lead{font-size:16px}
+  .hero .kpis{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.ncards,.biz2{grid-template-columns:1fr}
+  .kpi4{grid-template-columns:repeat(2,1fr)}
+  .kt b{font-size:21px}
+  .sec-h{flex-wrap:wrap} .sec-h p{margin-left:0;width:100%}
+  .sec-h h2{font-size:22px}
+  .card{padding:18px}
+  .oneliner .big{font-size:18px}
+  .spin{grid-template-columns:1fr}
+  .spin .ar{transform:rotate(90deg);text-align:center}
+  .chart-box{height:280px}
+}
+</style>
+</head>
+<body>
+
+<header class="gnb">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>SOLUS</b> 기업분석</a>
+    <nav id="nav">
+      <a href="#s1">회사소개</a>
+      <a href="#s2">재무분석</a>
+      <a href="#s3">26년 2분기 실적</a>
+      <a href="#s4">주요 사업</a>
+      <a href="#s5">최근 이슈</a>
+      <a href="#s6">주가</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="tag">KOSPI 336370 · 2026.10.16 기준</span>
+    <h1>솔루스첨단소재<small>Solus Advanced Materials</small></h1>
+    <p class="lead">전기차·ESS 배터리용 <b>전지박</b> + OLED 디스플레이 <b>소재</b> 전문기업</p>
+    <div class="kpis">
+      <div class="kpi"><span>설립</span><b>2019.10.01</b></div>
+      <div class="kpi"><span>대표이사</span><b>곽근만</b></div>
+      <div class="kpi"><span>임직원 (25.12)</span><b class="num">1,123명</b></div>
+      <div class="kpi"><span>25년 매출 (동박 포함)</span><b class="num">6,161억</b></div>
+      <div class="kpi"><span>자산총계 (26.06)</span><b class="num">2.22조</b></div>
+      <div class="kpi"><span>주가 (10/16 종가)</span><b class="num" id="heroPx">7,990원</b></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- 01 회사소개 -->
+<section id="s1">
+  <div class="sec-h"><span class="no">01</span><h2>회사소개</h2><p>출처 · 2026 회사소개서, IR BOOK 2Q26</p></div>
+
+  <div class="card">
+    <div class="oneliner">
+      <div class="big">배터리 음극 집전체 <em>전지박</em>을 세계 최초 개발한 소재 기업 · OLED <em>HBL(정공방어층)</em> 시장 지배 사업자</div>
+    </div>
+    <div class="biz2">
+      <div><b>전지박 (매출 약 74%, 26.2Q)</b><span>EV·ESS 배터리 음극용 초극박 구리박 · 헝가리 생산 + 캐나다 공장 구축 중 · 자회사 볼타에너지솔루션(VES)</span></div>
+      <div><b>OLED 소재 (매출 약 26%, 26.2Q)</b><span>OLED 증착 유기재료(HBL·ETL·Green Host 등) + 비발광 고분자재료 · 익산·함열·중국 창수 생산 · 영업이익률 10%대 중반 캐시카우</span></div>
+    </div>
+  </div>
+
+  <div class="grid g2 mt">
+    <div class="card">
+      <h3>2019 인적분할 → 지금의 솔루스</h3>
+      <div class="spin">
+        <div class="box"><b>㈜두산</b><span>전자BG · 소재 사업 보유</span></div>
+        <div class="ar">→</div>
+        <div class="box hl"><b>두산솔루스</b><span>2019.10.01 인적분할 신설<br>전지박·동박·OLED·바이오</span></div>
+        <div class="ar">→</div>
+        <div class="box"><b>솔루스첨단소재</b><span>스카이레이크 인수 후<br>사명 변경</span></div>
+      </div>
+      <ul class="dot mt" id="spinList">
+        <li><b>목적</b> 전지박·동박·전자소재 사업 전문화 · 독립 경영 · 성장 투자 재원 확보</li>
+        <li><b>일정</b> 19.04 이사회 결의 → 10.01 분할기일 → 10.18 코스피 재상장</li>
+        <li><b>동시 분할</b> 두산퓨얼셀도 함께 신설 (두산 · 솔루스 · 퓨얼셀 3사 체제)</li>
+        <li><b>주인 교체</b> 20.09 두산 유동성 위기 속 지분 53% 스카이레이크에 6,986억 매각</li>
+        <li><b>사업 정리</b> 바이오(솔루스바이오텍) 매각 → 23년 중단사업 · 동박(CFL) 매각 26.4 완료</li>
+        <li><b>현재</b> 전지박 + OLED 두 축으로 압축된 순수 소재 기업</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>연혁 핵심</h3>
+      <div class="tl">
+        <div class="it"><div class="y">1960</div><div class="t">유럽 최초 동박 제조사 <b>서킷포일룩셈부르크(CFL)</b> 설립 · 뿌리</div></div>
+        <div class="it k"><div class="y">1996</div><div class="t">CFL, 세계 최초 <b>전기차 배터리용 동박(전지박)</b> 개발</div></div>
+        <div class="it"><div class="y">2010</div><div class="t">OLED 사업 착수 · 익산 공장</div></div>
+        <div class="it"><div class="y">2014</div><div class="t"><b>HBL(정공방어층)</b> 양산 공급 개시 → 이후 시장 지배</div></div>
+        <div class="it k"><div class="y">2019</div><div class="t">㈜두산 인적분할 → <b>두산솔루스</b> 코스피 상장 · 헝가리 1공장 착공</div></div>
+        <div class="it k"><div class="y">2020</div><div class="t">PEF <b>스카이레이크</b> 경영권 인수 (지분 53% · 6,986억)</div></div>
+        <div class="it"><div class="y">2021</div><div class="t">헝가리 1공장 양산 · <b>솔루스첨단소재</b> 사명 변경</div></div>
+        <div class="it"><div class="y">2023</div><div class="t">캐나다 퀘벡 공장 착공 · 바이오(솔루스바이오텍) 크로다에 매각</div></div>
+        <div class="it"><div class="y">2024</div><div class="t">헝가리 2공장 양산 · CATL 공급계약</div></div>
+        <div class="it"><div class="y">2025</div><div class="t">ACC 2차 공급계약 · 차세대 ETL 양산 · <b>그린인광호스트</b> 승인</div></div>
+        <div class="it k"><div class="y">2026</div><div class="t">함열 OLED 통합기지 준공(3월) · <b>동박사업(CFL) 매각 완료(4월)</b></div></div>
+      </div>
+    </div>
+  </div>
+
+<style>
+.own{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}
+.donut{position:relative;height:220px}
+.donut .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none}
+.donut .c b{font-size:24px;font-weight:800;color:var(--blue);display:block;line-height:1.1}
+.donut .c span{font-size:12px;color:var(--ink4)}
+.shl{margin-top:12px;font-size:13.5px}
+.shl div{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line2)}
+.shl i{width:10px;height:10px;border-radius:3px;flex:none}
+.shl b{margin-left:auto;font-variant-numeric:tabular-nums}
+.tree{display:flex;flex-direction:column;align-items:center;gap:0}
+.tn{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 14px;text-align:center;min-width:170px}
+.tn b{display:block;font-size:14px;letter-spacing:-.2px}
+.tn span{display:block;font-size:12px;color:var(--ink4)}
+.tn.pe{background:var(--line2)}
+.tn.me{background:var(--blue);border-color:var(--blue);color:#fff;padding:12px 20px}
+.tn.me span{color:rgba(255,255,255,.85)}
+.tn.hu{border-color:var(--blue);background:var(--blue-bg)}
+.tn.sold{border-style:dashed;opacity:.7}
+.tn.sold b{text-decoration:line-through}
+.vl{width:2px;height:14px;background:var(--line);position:relative}
+.pct{display:inline-block;font-size:11.5px;font-weight:800;color:var(--blue);background:var(--blue-bg);border-radius:6px;padding:1px 7px;margin:3px 0}
+.tn.me .pct{background:rgba(255,255,255,.2);color:#fff}
+.branch{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;width:100%;position:relative;padding-top:14px;border-top:2px solid var(--line)}
+.branch>div{display:flex;flex-direction:column;align-items:center}
+.sub2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;padding-top:12px;border-top:2px solid var(--line);margin-top:0}
+.sub2>div{display:flex;flex-direction:column;align-items:center}
+.sub2 .tn{min-width:0;width:100%;padding:8px 8px}
+.flag{font-size:11px;font-weight:700;color:var(--blue)}
+@media (max-width:900px){ .own{grid-template-columns:1fr} }
+@media (max-width:600px){ .branch{grid-template-columns:1fr} .sub2{grid-template-columns:1fr} .tn{min-width:0;width:100%} }
+</style>
+<div class="card mt">
+  <h3>지분구조 · 종속회사 <span class="sub">26.06 IR BOOK · 언론 보도 기준</span></h3>
+  <div class="own">
+    <div>
+      <div class="donut"><canvas id="cOwn"></canvas><div class="c"><div><b>53.3%</b><span>스카이레이크 측</span></div></div></div>
+      <div class="shl">
+        <div><i style="background:var(--blue)"></i>스카이레이크롱텀스트래티직인베스트먼트 외 3인<b>53.3%</b></div>
+        <div><i style="background:var(--blue-3)"></i>소액주주 (약 7.4만명)<b>45.3%</b></div>
+        <div><i style="background:var(--line)"></i>기타<b>1.4%</b></div>
+      </div>
+      <p class="note">최대주주 = 스카이레이크(진대제 회장) PEF가 세운 인수 SPC · 인수 당시 롯데정밀화학 2,900억 FI 출자 · 우선주 솔루스첨단소재1우(33637K) 별도 상장</p>
+    </div>
+    <div class="tree">
+      <div class="tn pe"><b>스카이레이크에쿼티파트너스</b><span>PEF 운용사 · 2020 두산서 인수</span></div>
+      <div class="vl"></div>
+      <div class="tn pe"><b>스카이레이크롱텀스트래티직인베스트먼트</b><span>인수 SPC · 최대주주</span></div>
+      <div class="vl"></div><span class="pct">53.3%</span><div class="vl"></div>
+      <div class="tn me"><b>솔루스첨단소재㈜</b><span>KOSPI 336370 · OLED 소재 직영 (분당 R&D · 익산 생산)</span></div>
+      <div class="vl"></div>
+      <div class="branch">
+        <div>
+          <span class="pct">54.31%</span>
+          <div class="tn"><b>Volta Energy Solutions S.à r.l.</b><span>🇱🇺 룩셈부르크 · 전지박 중간지주</span><span class="flag">나머지 ≈ 스카이레이크 펀드 40% + LG엔솔 5%</span></div>
+          <div class="sub2">
+            <div><span class="pct">100%</span><div class="tn hu"><b>VES Europe Kft.</b><span>🇭🇺 유럽 통합법인 · 판매</span></div>
+              <div class="vl"></div><span class="pct">100%</span>
+              <div class="tn hu"><b>VES Hungary Kft.</b><span>🇭🇺 터터바냐 공장 · 생산 3.8만t</span></div></div>
+            <div><span class="pct">100%</span><div class="tn"><b>VES Canada Inc.</b><span>🇨🇦 퀘벡 · 27년 양산 목표</span></div></div>
+            <div><span class="pct">매각</span><div class="tn sold"><b>Circuit Foil Lux.</b><span>🇱🇺 동박 · 26.4 스카이레이크 펀드에 약 3,000억 매각</span></div></div>
+          </div>
+        </div>
+        <div><span class="pct">100%</span><div class="tn"><b>솔루스아이테크㈜</b><span>🇰🇷 함열 · OLED 비발광 소재</span></div></div>
+        <div><span class="pct">100%</span><div class="tn"><b>솔루스고신재료 창수</b><span>🇨🇳 장쑤성 · OLED 생산</span></div></div>
+      </div>
+    </div>
+  </div>
+  <ul class="dot mt">
+    <li><b>헝가리 2개 법인</b> VES Europe(유럽 통합·판매·자금 창구) → VES Hungary(실제 공장) 구조 · 26.1 헝가리 법인 587억 증자 · 26.5 CFL 매각대금 약 400억 추가 출자</li>
+    <li><b>VES 지분 확대 추진</b> 26.4 LG에너지솔루션 보유 VES 지분 784억에 인수 결의 → 완료 시 솔루스 59.55% · 스카이레이크 펀드 40.45%</li>
+    <li><b>이해상충 체크</b> 동박(CFL)·전지박(VES) 모두 최대주주 측 펀드가 거래 상대 · 소액주주 관점 주의</li>
+  </ul>
+</div>
+
+
+  <div class="grid g2 mt">
+    <div class="card">
+      <h3>어느 그룹 소속인가</h3>
+      <div class="tl">
+        <div class="it"><div class="y">~2019</div><div class="t"><b>두산그룹</b> ㈜두산 전자BG·소재 사업부</div></div>
+        <div class="it k"><div class="y">2019</div><div class="t">인적분할 → <b>두산솔루스</b> (두산그룹 계열사)</div></div>
+        <div class="it k"><div class="y">2020</div><div class="t">두산 유동성 위기 · 자산매각 → <b>스카이레이크</b> 인수</div></div>
+        <div class="it"><div class="y">현재</div><div class="t">대기업집단 아닌 <b>PEF(스카이레이크) 포트폴리오사</b> · 중견기업</div></div>
+      </div>
+      <p class="note">스카이레이크 = 삼성전자 사장·정통부 장관 출신 진대제 회장 설립 PEF · PEF 특성상 향후 엑시트(재매각) 가능성 상존</p>
+    </div>
+
+    <div class="card">
+      <h3>글로벌 거점</h3>
+      <table>
+        <thead><tr><th>지역</th><th style="text-align:left">거점</th><th>역할</th></tr></thead>
+        <tbody>
+          <tr><td>🇭🇺 헝가리</td><td style="text-align:left">터터바냐 1·2공장</td><td>전지박 3.8만톤</td></tr>
+          <tr><td>🇨🇦 캐나다</td><td style="text-align:left">퀘벡 (구축 중)</td><td>전지박 6.3만톤 목표</td></tr>
+          <tr><td>🇰🇷 분당</td><td style="text-align:left">본사 · R&D</td><td>OLED 연구 · 영업</td></tr>
+          <tr><td>🇰🇷 익산·함열</td><td style="text-align:left">통합 생산기지</td><td>OLED 주력 생산</td></tr>
+          <tr><td>🇨🇳 장쑤성 창수</td><td style="text-align:left">중국 공장</td><td>중국 고객 대응</td></tr>
+        </tbody>
+      </table>
+      <p class="note">유럽·북미 모두 현지 전지박 공장 보유 = 업계 유일 포지션 (회사 주장)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 재무분석 -->
+<section id="s2">
+  <div class="sec-h"><span class="no">02</span><h2>재무분석</h2><p>단위 · 억원 · IFRS 연결</p></div>
+
+  <div class="card">
+    <h3>연도별 실적 <span class="sub">2021 ~ 2025 · 당시 공시 기준 (동박 포함)</span></h3>
+    <div class="legend">
+      <span><i style="background:var(--blue)"></i>전지박</span>
+      <span><i style="background:var(--blue-2)"></i>OLED</span>
+      <span><i style="background:var(--blue-3)"></i>동박</span>
+      <span><i style="background:var(--blue-4)"></i>바이오</span>
+      <span><i style="background:var(--green)"></i>영업이익</span>
+      <span><i style="background:var(--red)"></i>영업손실</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(우)</span>
+    </div>
+    <div class="chart-box"><canvas id="cYear"></canvas></div>
+    <p class="note">매출 = 포털 재무제표(6,160.8억 등) · 사업부 구성 = IR BOOK 기준 · 21년 바이오 포함, 22년~ 바이오 중단사업 재분류</p>
+  </div>
+
+  <div class="card mt">
+    <h3>최근 5분기 실적 <span class="sub">25.2Q ~ 26.2Q · 계속영업 기준 (동박 제외)</span></h3>
+    <div class="legend">
+      <span><i style="background:var(--blue)"></i>전지박</span>
+      <span><i style="background:var(--blue-2)"></i>OLED</span>
+      <span><i style="background:var(--red)"></i>영업손실</span>
+      <span><i class="ln" style="background:var(--ink)"></i>영업이익률(우)</span>
+    </div>
+    <div class="chart-box"><canvas id="cQtr"></canvas></div>
+    <p class="note">동박 매각으로 IR이 전 분기를 계속영업 기준 재작성 · 포털 분기 수치(25.3Q~26.1Q 동박 포함 1,451~1,926억)와 기준이 달라 IR 수치 사용</p>
+  </div>
+
+  <div class="grid g2 mt">
+    <div class="card">
+      <h3>손익계산서 체크포인트</h3>
+      <div class="point"><div class="ic">1</div><div><b>5년 중 4년 영업적자</b><span>21년 +50억 이후 22년부터 연 -500~-730억 · 전지박 증설 고정비 + 저가동이 원인</span></div></div>
+      <div class="point"><div class="ic">2</div><div><b>매출총이익률 한 자릿수</b><span>21년 20% → 25년 6% · 26.2Q 0.8% (매출원가 1,011억 / 매출 1,019억)</span></div></div>
+      <div class="point"><div class="ic">3</div><div><b>23년 순이익 흑자는 일회성</b><span>솔루스바이오텍 매각(크로다, 약 3,500억) 처분이익 성격 · 본업 영업손실 -732억</span></div></div>
+      <div class="point"><div class="ic">4</div><div><b>환율이 순이익 흔듦</b><span>외화환산손익 24년 +423억 · 25.2Q -416억 · 유로·달러 차입 노출</span></div></div>
+      <div class="point"><div class="ic">5</div><div><b>26.2Q 순이익 +593억 흑자</b><span>동박 매각 중단영업이익 +887억 효과 · 계속영업은 -294억 적자</span></div></div>
+      <div class="point"><div class="ic">6</div><div><b>이자비용 증가</b><span>이자손익 21년 -45억 → 25년 -190억 · 차입 확대 부담</span></div></div>
+    </div>
+    <div class="card">
+      <h3>재무상태 요약 <span class="sub">억원</span></h3>
+      <div class="tbl">
+      <table>
+        <thead><tr><th>구분</th><th>22.12</th><th>23.12</th><th>24.12</th><th>25.12</th><th>26.06</th></tr></thead>
+        <tbody>
+          <tr><td>자산총계</td><td>14,610</td><td>17,067</td><td>20,794</td><td>21,605</td><td>22,243</td></tr>
+          <tr><td>부채총계</td><td>5,429</td><td>6,485</td><td>9,879</td><td>12,149</td><td>11,951</td></tr>
+          <tr><td>자본총계</td><td>9,181</td><td>10,582</td><td>10,915</td><td>9,456</td><td>10,292</td></tr>
+          <tr class="hl"><td>부채비율</td><td>59%</td><td>61%</td><td>91%</td><td class="dn">128%</td><td>116%</td></tr>
+          <tr><td>차입금</td><td>3,520</td><td>3,746</td><td>7,645</td><td>8,760</td><td>8,914</td></tr>
+          <tr><td>현금</td><td>1,628</td><td>2,741</td><td>1,751</td><td>666</td><td>703</td></tr>
+          <tr class="hl"><td>순차입금</td><td>1,893</td><td>1,006</td><td>5,894</td><td>8,094</td><td class="dn">8,211</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ul class="dot mt">
+        <li><b>순차입금 4년새 4배</b> 캐나다·헝가리 증설 CAPEX 차입 의존</li>
+        <li><b>유동부채 1.1조 → 0.6조</b> 26.1H 단기차입 장기 전환 · 만기 부담 완화</li>
+        <li><b>현금 703억</b> 동박 매각대금 약 3,000억 유입에도 증자·상환에 소진</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h3>연간 손익 요약 <span class="sub">억원 · 포털 재무제표 기준</span></h3>
+    <div class="tbl">
+    <table>
+      <thead><tr><th>항목</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>YoY</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>매출액</td><td>3,803</td><td>4,183</td><td>4,294</td><td>5,710</td><td>6,161</td><td class="up">+7.9%</td></tr>
+        <tr><td>매출총이익</td><td>776</td><td>323</td><td>172</td><td>402</td><td>390</td><td class="dn">-3.1%</td></tr>
+        <tr><td>판관비</td><td>725</td><td>820</td><td>905</td><td>946</td><td>1,123</td><td class="dn">+18.7%</td></tr>
+        <tr class="hl"><td>영업이익</td><td class="up">50</td><td class="dn">-497</td><td class="dn">-732</td><td class="dn">-544</td><td class="dn">-733</td><td class="dn">적자확대</td></tr>
+        <tr><td>영업이익률</td><td>1.3%</td><td>-11.9%</td><td>-17.0%</td><td>-9.5%</td><td>-11.9%</td><td></td></tr>
+        <tr><td>금융수익</td><td>203</td><td>496</td><td>322</td><td>694</td><td>399</td><td></td></tr>
+        <tr><td>금융원가</td><td>197</td><td>398</td><td>537</td><td>499</td><td>979</td><td class="dn">+96.2%</td></tr>
+        <tr><td>기타영업외손익</td><td>-21</td><td>-9</td><td class="up">2,831</td><td>-25</td><td>-69</td><td></td></tr>
+        <tr class="hl"><td>당기순이익</td><td>2</td><td class="dn">-472</td><td class="up">1,268</td><td class="dn">-427</td><td class="dn">-1,384</td><td class="dn">적자확대</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- 03 26년 2분기 -->
+<section id="s3">
+  <div class="sec-h"><span class="no">03</span><h2>26년 2분기 실적</h2><p>2026.07.24 컨퍼런스콜 · 계속영업 기준 · 감사 전</p></div>
+
+  <div class="kpi4">
+    <div class="kt"><span>매출액</span><b class="num">1,019억</b><em class="up">YoY +31.0% · QoQ +15.7%</em></div>
+    <div class="kt"><span>영업이익</span><b class="num dn">-213억</b><em class="up">적자폭 QoQ 34.3% 축소</em></div>
+    <div class="kt"><span>EBITDA</span><b class="num dn">-46억</b><em class="up">적자폭 QoQ 73.6% 축소</em></div>
+    <div class="kt"><span>헝가리 가동률</span><b class="num">73%</b><em class="up">1Q 53% → 2Q 73%</em></div>
+  </div>
+
+  <div class="grid g2 mt">
+    <div class="card">
+      <h3>전지박 <span class="pill g">성장</span></h3>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:24px" class="num">750억</b><span class="up num" style="font-weight:700">YoY +63.0% · QoQ +21.6%</span></div>
+      <div class="bar"><i style="width:74%"></i></div><p class="note" style="margin-top:0">매출 비중 74%</p>
+      <ul class="dot mt">
+        <li>북미 기존 고객 공급 확대 + <b>신규 글로벌 고객 양산</b> 본격화</li>
+        <li>유럽 주요 고객 수요 회복</li>
+        <li>가동률 상승 → 고정비 흡수 → EBITDA 개선</li>
+        <li><b>하반기</b> 북미 중장기 계약·ESS 프로젝트 · 고부가 SR 제품 확대</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>OLED <span class="pill a">조정</span></h3>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:24px" class="num">269억</b><span class="num" style="font-weight:700"><span class="dn">YoY -15.4%</span> · <span class="up">QoQ +1.9%</span></span></div>
+      <div class="bar"><i style="width:26%;background:var(--blue-2)"></i></div><p class="note" style="margin-top:0">매출 비중 26%</p>
+      <ul class="dot mt">
+        <li>계절적 비수기 + <b>메모리 가격 상승 → 스마트폰 수요 둔화</b></li>
+        <li>주요 고객 중소형 OLED 소재 수요 약세</li>
+        <li><b>하반기</b> IT향 aETL · TV향 HTL·CPL 신규 양산 · Red Prime 적용 확대</li>
+        <li>Green Host 신규 고객 진입 · 함열 통합기지(26.3) 효율화</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid g3 mt">
+    <div class="card">
+      <h3>🇪🇺 유럽 EV 시장</h3>
+      <ul class="dot">
+        <li>26.1H EV 판매 <b>245만대</b> (YoY +31%)</li>
+        <li>2H 전망 298만대 (YoY +36%)</li>
+        <li>독·프·이·스 보조금 재도입</li>
+        <li>중국계 점유율 확대 → 고객별 수혜 차별화</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🇺🇸 북미 EV · ESS</h3>
+      <ul class="dot">
+        <li>26.1H EV 판매 <b>65만대</b> (YoY -26%) · 세액공제 축소</li>
+        <li>美 ESS 설치 27GWh (YoY +23%) · AI 데이터센터 수요</li>
+        <li>2H EV +5% 반등 · ESS +24% 전망</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>회사 가이던스</h3>
+      <ul class="dot">
+        <li>26년 전지박 매출 목표 <b>3,940억</b> (YoY +114%)</li>
+        <li>전지박 고객사 8개 → <b>10개</b> 확대</li>
+        <li>26년 전지박 분기 흑자전환 목표</li>
+        <li>27년 캐나다 양산 · 연간 이익 흑자 목표</li>
+      </ul>
+      <p class="note">1H 전지박 1,367억 → 목표 달성엔 2H 2,573억 필요 (1H 대비 1.9배)</p>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h3>분기 손익 상세 <span class="sub">억원 · IR BOOK 계속영업 기준</span></h3>
+    <div class="tbl">
+    <table>
+      <thead><tr><th>구분</th><th>25.1Q</th><th>25.2Q</th><th>25.3Q</th><th>25.4Q</th><th>26.1Q</th><th>26.2Q</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>매출액</td><td>895</td><td>778</td><td>685</td><td>742</td><td>881</td><td>1,019</td></tr>
+        <tr><td>&nbsp;· 전지박</td><td>598</td><td>460</td><td>364</td><td>415</td><td>617</td><td>750</td></tr>
+        <tr><td>&nbsp;· OLED</td><td>297</td><td>318</td><td>321</td><td>327</td><td>264</td><td>269</td></tr>
+        <tr><td>매출총이익</td><td>24</td><td>7</td><td>119</td><td class="dn">-33</td><td class="dn">-70</td><td>8</td></tr>
+        <tr><td>EBITDA</td><td class="dn">-65</td><td class="dn">-72</td><td class="up">28</td><td class="dn">-134</td><td class="dn">-174</td><td class="dn">-46</td></tr>
+        <tr class="hl"><td>영업이익</td><td class="dn">-204</td><td class="dn">-208</td><td class="dn">-113</td><td class="dn">-287</td><td class="dn">-324</td><td class="dn">-213</td></tr>
+        <tr><td>영업이익률</td><td>-22.8%</td><td>-26.8%</td><td>-16.5%</td><td>-38.7%</td><td>-36.8%</td><td>-20.9%</td></tr>
+        <tr><td>중단영업손익</td><td>31</td><td>-1</td><td>-120</td><td>18</td><td>79</td><td class="up">887</td></tr>
+        <tr class="hl"><td>당기순이익</td><td class="dn">-319</td><td class="dn">-523</td><td class="dn">-291</td><td class="dn">-250</td><td class="dn">-29</td><td class="up">593</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- 04 주요 사업 -->
+<section id="s4">
+  <div class="sec-h"><span class="no">04</span><h2>주요 사업</h2><p>전지박 · OLED</p></div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>⚡ 전지박 (Battery Copper Foil)</h3>
+      <p style="font-size:14.5px;color:var(--ink2);margin-bottom:12px">배터리 음극재를 받치는 얇은 구리박 · 전류 통로 + 방열 + 전극 지지</p>
+      <table>
+        <thead><tr><th>스펙</th><th>솔루스</th><th>범용</th></tr></thead>
+        <tbody>
+          <tr><td>두께 (Thin)</td><td><b>4.5㎛</b></td><td>8㎛</td></tr>
+          <tr><td>강도 (Strength)</td><td><b>70 kgf/㎟</b></td><td>30~40</td></tr>
+          <tr><td>연신율 (Elongation)</td><td><b>15%</b></td><td>8%</td></tr>
+          <tr><td>권취 길이</td><td><b>30km 무결점</b></td><td>-</td></tr>
+        </tbody>
+      </table>
+      <ul class="dot mt">
+        <li><b>CAPA</b> 헝가리 3.8만톤 → 캐나다 6.3만톤 추가 → 중장기 16.3만톤</li>
+        <li><b>캐나다</b> 투자 약 1조 · 정책금융 4,400억($3억) · 27년 양산</li>
+        <li><b>고객</b> 글로벌 배터리 8개사 → 10개사 · CATL·ACC 등</li>
+        <li><b>ESS</b> 비중 30% 이상 확대 목표 · 북미 ESS 물량 80%</li>
+        <li><b>신시장</b> 원통형 배터리 · 휴머노이드 로봇 · 전고체 집전체</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📱 OLED 소재</h3>
+      <p style="font-size:14.5px;color:var(--ink2);margin-bottom:12px">OLED 패널 증착 유기재료 + 비발광 고분자재료 · 스마트폰·IT·TV·XR·차량</p>
+      <table>
+        <thead><tr><th>구분</th><th style="text-align:left">제품</th></tr></thead>
+        <tbody>
+          <tr><td>유기재료 (발광층·공통층)</td><td style="text-align:left"><b>HBL</b> · ETL · HTL · Green Host · CPL</td></tr>
+          <tr><td>고분자 (비발광)</td><td style="text-align:left">Filler · TFE · OCR/OCA</td></tr>
+          <tr><td>차세대</td><td style="text-align:left">iLED · Quantum Dot</td></tr>
+        </tbody>
+      </table>
+      <ul class="dot mt">
+        <li><b>HBL</b> 2014년 이후 시장 지배 · 관련 특허 약 740건</li>
+        <li><b>Green Host</b> 소수 업체 독점 시장 25년 진입 · 26년 본격 매출</li>
+        <li><b>수익성</b> 영업이익률 10%대 중반 · 전지박 투자 지탱 캐시카우</li>
+        <li><b>함열</b> 26.3 통합기지 준공 · 생산 CAPA 2배</li>
+        <li><b>리스크</b> 소수 패널 고객 의존 · 스마트폰 수요 민감</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h3>사업 구조 변화 <span class="sub">매출 구성 · 억원</span></h3>
+    <div class="tbl">
+    <table>
+      <thead><tr><th>사업부</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>26.1H</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td>전지박</td><td>378</td><td>1,127</td><td>1,546</td><td>2,483</td><td>1,837</td><td>1,367</td><td><span class="pill g">핵심 성장</span></td></tr>
+        <tr><td>OLED</td><td>950</td><td>1,251</td><td>1,112</td><td>1,264</td><td>1,263</td><td>532</td><td><span class="pill">캐시카우</span></td></tr>
+        <tr><td>동박 (CFL)</td><td>2,036</td><td>1,805</td><td>1,636</td><td>1,962</td><td>약 3,061</td><td>-</td><td><span class="pill k">26.4 매각</span></td></tr>
+        <tr><td>바이오</td><td>440</td><td>(429)</td><td>-</td><td>-</td><td>-</td><td>-</td><td><span class="pill k">매각</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">25년 전지박은 IR 재분류 기준(1,837억) · 동박은 25년 총매출 6,161억 − 계속영업 3,100억으로 추정 · 22년 바이오는 중단사업 재분류로 매출 제외</p>
+  </div>
+</section>
+
+<!-- 05 최근 이슈 -->
+<section id="s5">
+  <div class="sec-h"><span class="no">05</span><h2>최근 이슈</h2><p>2025.01 ~ 2026.10 · 카드 클릭 시 원문 이동</p></div>
+  <div class="months" id="monthBtns"></div>
+  <div id="newsList"></div>
+</section>
+
+<!-- 06 주가 -->
+<section id="s6">
+  <div class="sec-h"><span class="no">06</span><h2>주가</h2><p>2025.01.02 ~ 2026.10.16 · 일별 종가 · 출처 네이버 금융</p></div>
+
+  <div class="kpi4" id="pxKpi"></div>
+
+  <div class="card mt">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+      <h3 style="margin:0">일별 종가 · 거래량 <span class="sub">● 급등락 지점 마우스오버</span></h3>
+      <div class="rng" id="rng">
+        <button data-r="all" class="on">전체</button><button data-r="2025">2025</button><button data-r="2026">2026</button><button data-r="6m">6개월</button>
+      </div>
+    </div>
+    <div class="chart-box" style="height:380px"><canvas id="cPx"></canvas></div>
+    <p class="note">수정주가 기준 · ▲ 초록 = 급등 · ▼ 빨강 = 급락</p>
+  </div>
+
+  <h3 style="font-size:17px;margin:24px 0 12px">급등락 원인</h3>
+  <div class="moves" id="moves"></div>
+
+  <div class="card mt">
+    <details>
+      <summary>일별 주가 데이터 전체 보기 (<span id="pxN"></span>거래일)</summary>
+      <div style="margin-top:12px"><button class="btn" id="dl">⬇ CSV 다운로드</button></div>
+      <div class="daily"><table id="pxTbl"><thead><tr><th>일자</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>거래량</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  자료 · 솔루스첨단소재 2026 회사소개서, IR BOOK 2Q26(2026.07.24), 26년 2분기 컨퍼런스콜 스크립트, 포털 재무제표, 네이버 금융 일별 시세, 각 언론 보도<br>
+  2026 2분기 수치는 외부감사인 검토 전 · 투자 판단 책임은 이용자 본인 · 2026.10.16 작성
+</div></footer>
+
+<script>
+const PX = [["2025-01-02",8060,8240,8040,8180,89125],["2025-01-03",8110,8780,8110,8720,167800],["2025-01-06",8820,9250,8640,9250,220190],["2025-01-07",9350,9520,9210,9350,146939],["2025-01-08",9240,9560,9200,9520,170146],["2025-01-09",9550,9550,9100,9100,165826],["2025-01-10",9200,9220,9050,9050,98351],["2025-01-13",8940,9150,8910,8960,55745],["2025-01-14",8890,9300,8840,9280,77231],["2025-01-15",9230,9380,9030,9040,86368],["2025-01-16",9270,9370,9120,9250,78369],["2025-01-17",9250,9340,9100,9170,65350],["2025-01-20",9300,11800,9300,11050,7815973],["2025-01-21",10960,11120,10240,10540,1291396],["2025-01-22",10450,10630,10130,10550,650534],["2025-01-23",10340,10810,10140,10300,957667],["2025-01-24",10170,10280,9880,9880,380702],["2025-01-31",9810,10120,9550,10050,314532],["2025-02-03",9820,9900,8920,8930,445477],["2025-02-04",9010,9210,8820,8820,311348],["2025-02-05",8860,9220,8860,9160,207404],["2025-02-06",9190,9410,9100,9380,253256],["2025-02-07",9300,9370,8660,9230,241665],["2025-02-10",9140,9650,8880,9630,324220],["2025-02-11",9650,9660,9400,9530,168271],["2025-02-12",9550,9770,9250,9360,203602],["2025-02-13",9380,9600,9310,9570,171608],["2025-02-14",9750,9810,9510,9600,191787],["2025-02-17",9590,10100,9500,10020,337861],["2025-02-18",10030,10200,9800,10010,271253],["2025-02-19",10040,10410,10040,10340,347289],["2025-02-20",10440,10440,10010,10280,267302],["2025-02-21",10280,10460,10140,10270,301884],["2025-02-24",10090,10520,10010,10400,247961],["2025-02-25",10240,10420,10050,10100,176274],["2025-02-26",10070,10260,9910,10230,158969],["2025-02-27",10190,10260,9890,9960,174865],["2025-02-28",9850,9850,9290,9320,268601],["2025-03-04",9320,9500,9050,9320,188593],["2025-03-05",9320,9770,9320,9570,117039],["2025-03-06",9710,9850,9410,9510,120204],["2025-03-07",9450,9750,9320,9500,100934],["2025-03-10",9370,9740,9320,9500,84026],["2025-03-11",9110,9370,9090,9240,102753],["2025-03-12",9320,9400,9150,9220,89294],["2025-03-13",9230,9570,9150,9150,123872],["2025-03-14",9370,9370,9110,9230,88725],["2025-03-17",9230,9300,9150,9290,86579],["2025-03-18",9290,9400,9190,9200,97293],["2025-03-19",9200,9390,9140,9280,79322],["2025-03-20",9370,9420,9270,9310,74329],["2025-03-21",9300,9300,8800,8800,501156],["2025-03-24",8820,8900,8510,8590,172276],["2025-03-25",8590,8720,8400,8460,130308],["2025-03-26",8800,8820,8490,8690,100927],["2025-03-27",8630,8670,8310,8400,98298],["2025-03-28",8400,8430,8180,8220,114085],["2025-03-31",7950,8100,7680,7690,149524],["2025-04-01",7700,7900,7670,7690,85240],["2025-04-02",7790,7840,7520,7570,93912],["2025-04-03",7400,7570,7350,7360,82197],["2025-04-04",7210,7670,7210,7500,142063],["2025-04-07",7220,7490,6840,6860,224641],["2025-04-08",7010,7460,6960,7180,168277],["2025-04-09",7090,7250,6750,6800,207492],["2025-04-10",7150,7640,7130,7490,168096],["2025-04-11",7330,7610,7270,7610,126499],["2025-04-14",7660,8000,7600,7650,211311],["2025-04-15",7720,7900,7620,7750,125840],["2025-04-16",7860,7950,7480,7600,134992],["2025-04-17",7570,7710,7430,7650,74940],["2025-04-18",7800,7800,7600,7710,53440],["2025-04-21",7770,7790,7600,7660,57287],["2025-04-22",7510,7680,7460,7610,75081],["2025-04-23",7680,7990,7680,7980,153846],["2025-04-24",8050,8050,7880,7910,79478],["2025-04-25",8100,8460,8010,8330,153579],["2025-04-28",9450,9850,8950,9100,1082209],["2025-04-29",9170,9190,8700,9070,215363],["2025-04-30",8990,9070,8400,8540,233184],["2025-05-02",8430,8540,8250,8440,119567],["2025-05-07",8440,8490,8270,8320,70367],["2025-05-08",8320,8490,8260,8420,97211],["2025-05-09",8440,8460,8060,8070,147233],["2025-05-12",8170,8980,8170,8610,421904],["2025-05-13",8680,8840,8480,8590,137630],["2025-05-14",8600,8740,8410,8620,110388],["2025-05-15",8530,8610,8240,8260,122569],["2025-05-16",8330,8330,7970,8010,147169],["2025-05-19",8000,8200,7680,7850,127493],["2025-05-20",8000,8000,7690,7720,111688],["2025-05-21",7750,7790,7480,7570,141029],["2025-05-22",7450,7470,7240,7310,191812],["2025-05-23",7310,7590,7150,7250,148542],["2025-05-26",7260,7520,7250,7380,106154],["2025-05-27",7380,7410,7150,7280,92012],["2025-05-28",7600,7960,7540,7910,341918],["2025-05-29",8100,8280,7830,8230,210793],["2025-05-30",8430,8900,8240,8580,302399],["2025-06-02",9900,10990,9400,9720,5463941],["2025-06-04",9550,9640,9210,9260,673739],["2025-06-05",9250,9300,8960,9020,489875],["2025-06-09",8750,8800,8510,8610,350410],["2025-06-10",8670,8780,8440,8450,230293],["2025-06-11",8530,8650,8480,8550,178483],["2025-06-12",8600,8840,8500,8560,250774],["2025-06-13",8820,8830,8400,8490,310985],["2025-06-16",8360,8370,8210,8300,138935],["2025-06-17",8470,8490,8200,8260,184737],["2025-06-18",8290,8430,8240,8300,98571],["2025-06-19",8390,8410,8160,8340,128607],["2025-06-20",8400,8690,8300,8570,464378],["2025-06-23",8370,8390,8150,8340,161761],["2025-06-24",8490,8670,8100,8570,182757],["2025-06-25",8570,8670,8430,8470,138116],["2025-06-26",8530,8550,8240,8380,117343],["2025-06-27",8370,8380,8150,8200,120690],["2025-06-30",8340,8340,8050,8110,116124],["2025-07-01",8110,8280,8060,8170,113345],["2025-07-02",8180,8180,8000,8140,86561],["2025-07-03",8150,8470,8150,8430,196508],["2025-07-04",8450,8480,8250,8300,115419],["2025-07-07",8550,8850,8420,8500,405386],["2025-07-08",8400,8570,8310,8420,130392],["2025-07-09",8510,8580,8390,8500,125188],["2025-07-10",8560,8630,8450,8610,152176],["2025-07-11",8730,8920,8610,8650,263663],["2025-07-14",8670,8680,8300,8370,186655],["2025-07-15",8350,8410,8280,8400,120060],["2025-07-16",8320,8400,8180,8200,132232],["2025-07-17",8200,8250,8050,8250,107618],["2025-07-18",8260,8670,8250,8560,286406],["2025-07-21",8620,9030,8560,8940,410557],["2025-07-22",8900,9000,8630,8670,211731],["2025-07-23",8790,8830,8460,8710,178299],["2025-07-24",8740,9040,8510,8840,409264],["2025-07-25",8860,8980,8620,8710,129449],["2025-07-28",8800,8800,8570,8660,116002],["2025-07-29",8580,8590,8430,8560,121543],["2025-07-30",8530,8900,8480,8750,172032],["2025-07-31",8910,8910,8460,8610,168491],["2025-08-01",8550,8650,8190,8280,156232],["2025-08-04",8200,8370,8030,8200,107432],["2025-08-05",8210,8690,8200,8640,224588],["2025-08-06",8540,9130,8540,8760,440495],["2025-08-07",8810,8830,8610,8760,101235],["2025-08-08",8780,8830,8660,8700,122061],["2025-08-11",8880,9400,8860,9280,699728],["2025-08-12",9200,9340,9110,9120,200780],["2025-08-13",9320,9420,9090,9350,206002],["2025-08-14",9350,9480,9180,9340,192515],["2025-08-18",9390,9390,8970,9000,163551],["2025-08-19",9070,9100,8810,8950,114085],["2025-08-20",8770,8900,8615,8710,125109],["2025-08-21",8800,8860,8630,8690,97441],["2025-08-22",8690,8790,8600,8740,96510],["2025-08-25",8930,8970,8760,8900,100863],["2025-08-26",8810,8990,8650,8650,117045],["2025-08-27",8730,8730,8470,8490,139052],["2025-08-28",8530,8530,8330,8390,112045],["2025-08-29",8370,8420,7390,7450,619138],["2025-09-01",7180,7480,7150,7290,159102],["2025-09-02",7280,7380,7250,7380,65225],["2025-09-03",7660,7660,7440,7510,95649],["2025-09-04",7590,7830,7590,7640,100697],["2025-09-05",7710,7750,7530,7630,90350],["2025-09-08",7780,7870,7700,7780,85285],["2025-09-09",7790,7920,7690,7800,92053],["2025-09-10",7800,7840,7700,7790,68587],["2025-09-11",7850,7850,7450,7730,101777],["2025-09-12",7830,7920,7770,7770,102379],["2025-09-15",7840,7870,7700,7700,120632],["2025-09-16",7700,7800,7680,7680,165779],["2025-09-17",7830,8160,7700,8000,272171],["2025-09-18",8090,8180,7890,8140,115209],["2025-09-19",8170,8245,8030,8170,109773],["2025-09-22",8090,8180,7820,7930,140448],["2025-09-23",7930,7980,7830,7960,73894],["2025-09-24",7960,7960,7720,7810,78074],["2025-09-25",7730,7990,7730,7890,72157],["2025-09-26",7980,7980,7670,7760,101436],["2025-09-29",7680,7810,7660,7730,51859],["2025-09-30",7730,7810,7650,7660,50047],["2025-10-01",7660,7750,7630,7630,43173],["2025-10-02",7650,7850,7640,7700,95715],["2025-10-10",7920,7920,7540,7610,193373],["2025-10-13",7390,7740,7360,7700,117011],["2025-10-14",7790,8000,7660,7860,215663],["2025-10-15",7910,8030,7770,8000,124776],["2025-10-16",8040,8680,8000,8610,485268],["2025-10-17",8520,9070,8480,8920,479566],["2025-10-20",8830,8840,8560,8760,218009],["2025-10-21",8680,9190,8620,8860,298070],["2025-10-22",9010,9080,8730,8870,183122],["2025-10-23",8770,9010,8690,8760,127024],["2025-10-24",8720,9390,8700,9270,437541],["2025-10-27",9570,9580,9020,9110,337273],["2025-10-28",9110,9280,8810,9280,224972],["2025-10-29",9940,9940,9380,9480,875762],["2025-10-30",9320,9550,9110,9200,264768],["2025-10-31",9320,9500,9100,9180,237037],["2025-11-03",9430,9750,9320,9590,326811],["2025-11-04",9760,10050,9630,9900,402588],["2025-11-05",9650,9690,8810,9110,317533],["2025-11-06",9270,9350,8900,8950,197738],["2025-11-07",8730,8840,8170,8390,287252],["2025-11-10",8390,9830,8150,9470,686119],["2025-11-11",9510,9640,8990,9150,346001],["2025-11-12",10530,11890,9960,11890,7895089],["2025-11-13",11590,11700,10860,10970,3993634],["2025-11-14",10550,10630,10260,10470,1000587],["2025-11-17",10660,10790,10080,10150,742158],["2025-11-18",10400,10430,9520,9520,651692],["2025-11-19",9600,9650,9010,9080,571329],["2025-11-20",9310,9880,9310,9560,703460],["2025-11-21",8980,9170,8770,8800,476906],["2025-11-24",8930,9010,8230,8230,1393152],["2025-11-25",8430,8450,7950,8000,533174],["2025-11-26",9150,9500,8430,8500,2274739],["2025-11-27",8600,8600,8220,8390,400027],["2025-11-28",8650,8660,8370,8540,300706],["2025-12-01",8620,8770,8480,8540,306261],["2025-12-02",8550,8570,8320,8490,243844],["2025-12-03",8540,8550,8140,8290,443529],["2025-12-04",8300,8300,8010,8040,268468],["2025-12-05",8080,8140,8010,8070,164230],["2025-12-08",8100,8280,8070,8280,240931],["2025-12-09",8230,8330,8120,8210,216052],["2025-12-10",8290,8380,8080,8100,286731],["2025-12-11",8180,8180,8050,8060,130804],["2025-12-12",8080,8120,8000,8110,257742],["2025-12-15",8020,8120,7910,8010,142697],["2025-12-16",8060,8060,7730,7800,328153],["2025-12-17",7860,8000,7710,7740,137917],["2025-12-18",7600,7700,7420,7510,200145],["2025-12-19",7540,7570,7350,7490,201713],["2025-12-22",7570,7710,7520,7630,118184],["2025-12-23",7790,7790,7470,7570,164645],["2025-12-24",7570,7630,7520,7550,99897],["2025-12-26",7640,7640,7430,7490,147831],["2025-12-29",7500,7520,7400,7460,120552],["2025-12-30",7500,7500,7260,7300,182093],["2026-01-02",7250,7300,7100,7110,259055],["2026-01-05",7120,7410,7110,7330,227140],["2026-01-06",7470,7490,7320,7400,180478],["2026-01-07",7390,7400,7100,7160,210795],["2026-01-08",7120,7150,6940,6980,292887],["2026-01-09",6990,7060,6880,7060,152069],["2026-01-12",6930,7340,6930,7340,251766],["2026-01-13",7360,7380,7100,7270,265243],["2026-01-14",7290,7310,7000,7200,249568],["2026-01-15",7170,7240,7060,7240,187850],["2026-01-16",7260,7370,7130,7150,173792],["2026-01-19",7160,7460,7070,7410,349269],["2026-01-20",7570,7700,7400,7540,316824],["2026-01-21",7450,7460,7180,7450,264736],["2026-01-22",7500,7910,7500,7870,600244],["2026-01-23",8150,8150,7620,7800,378037],["2026-01-26",8000,8100,7800,8010,474843],["2026-01-27",7900,8060,7820,7950,278343],["2026-01-28",8040,8390,7990,8300,650295],["2026-01-29",8590,8660,8070,8600,635586],["2026-01-30",8540,8690,8100,8150,382388],["2026-02-02",7880,8170,7660,7680,393346],["2026-02-03",7860,8030,7690,8020,245588],["2026-02-04",7990,8340,7930,8300,264550],["2026-02-05",8180,8300,7900,7950,201675],["2026-02-06",7920,7920,7390,7750,259231],["2026-02-09",9170,9430,8735,8980,2796689],["2026-02-10",9370,9380,8790,8920,791619],["2026-02-11",9250,9300,8950,9120,527746],["2026-02-12",9270,9270,9010,9150,385755],["2026-02-13",9120,9200,8900,9000,323940],["2026-02-19",9120,9640,9070,9490,640247],["2026-02-20",9320,9420,9150,9170,331749],["2026-02-23",9240,9250,8830,8880,347626],["2026-02-24",8850,9190,8850,9030,302278],["2026-02-25",9150,9170,8920,8940,290744],["2026-02-26",9060,9150,8900,8900,248695],["2026-02-27",8800,8990,8740,8950,213984],["2026-03-03",8660,9060,8090,8330,385749],["2026-03-04",7800,8100,7080,7090,692842],["2026-03-05",7400,8120,7400,7950,368173],["2026-03-06",7800,8480,7740,8380,306401],["2026-03-09",8060,8060,7550,7860,287593],["2026-03-10",8160,8260,8030,8210,210697],["2026-03-11",8260,8560,8130,8290,257747],["2026-03-12",8160,8870,8160,8750,312606],["2026-03-13",8390,8690,8290,8430,256045],["2026-03-16",8150,8530,8110,8110,158161],["2026-03-17",8380,8550,8280,8380,170642],["2026-03-18",8470,8590,8270,8400,143886],["2026-03-19",8200,8290,8170,8180,88188],["2026-03-20",8210,8900,8210,8670,455617],["2026-03-23",9050,9050,8530,8530,361663],["2026-03-24",8890,9150,8600,8870,352256],["2026-03-25",9000,10200,8960,9900,1605712],["2026-03-26",10090,10100,9200,9250,651936],["2026-03-27",8990,9410,8720,9260,345770],["2026-03-30",9000,9410,8830,9130,261559],["2026-03-31",9210,9320,8850,8850,306415],["2026-04-01",9200,9300,9030,9250,315028],["2026-04-02",9530,9810,8960,9090,587792],["2026-04-03",9290,9380,8970,9140,215939],["2026-04-06",9190,9590,9070,9160,267595],["2026-04-07",9260,9750,9110,9160,465945],["2026-04-08",9590,9590,9240,9510,285311],["2026-04-09",9490,9530,9270,9270,186385],["2026-04-10",9320,9800,9280,9690,484843],["2026-04-13",9620,9870,9500,9680,272403],["2026-04-14",9860,9890,9510,9680,251583],["2026-04-15",9800,10580,9660,10400,943182],["2026-04-16",10690,10700,10060,10450,414272],["2026-04-17",10400,10990,10200,10730,425639],["2026-04-20",11030,11180,10760,11010,545188],["2026-04-21",11500,14300,11300,13880,5072608],["2026-04-22",14610,14620,12610,13500,2804463],["2026-04-23",14430,16900,14430,15500,7544638],["2026-04-24",15800,16080,14700,16030,2101870],["2026-04-27",15610,15610,15110,15600,1012968],["2026-04-28",15930,16250,15800,16150,1003117],["2026-04-29",15900,15900,15080,15430,980524],["2026-04-30",14870,14920,13090,13090,3202972],["2026-05-04",13540,14060,13370,13660,1149372],["2026-05-06",14040,14090,12960,13320,800531],["2026-05-07",13650,14010,13310,13360,501609],["2026-05-08",13560,13560,12800,12940,440522],["2026-05-11",13060,13190,12130,12280,798550],["2026-05-12",12070,12230,11200,11690,770716],["2026-05-13",11760,11760,11100,11350,390254],["2026-05-14",12220,12300,11580,12060,575848],["2026-05-15",11900,12220,10810,11110,444171],["2026-05-18",10820,11250,10400,11130,353994],["2026-05-19",11350,11350,10400,10620,342880],["2026-05-20",10510,10560,9880,10050,380281],["2026-05-21",10330,10740,10220,10740,258107],["2026-05-22",11080,11670,10910,11460,332111],["2026-05-26",11500,11590,10920,10920,417778],["2026-05-27",9800,10080,9400,9500,1014129],["2026-05-28",9600,9670,8800,9300,700466],["2026-05-29",9180,12090,8880,11690,3031670],["2026-06-01",11220,13370,11000,11960,2034409],["2026-06-02",11720,12790,10830,11370,824467],["2026-06-04",12000,12030,10480,11180,860192],["2026-06-05",10940,11290,10720,11010,484166],["2026-06-08",9790,10220,9760,9790,302871],["2026-06-09",10030,10210,9770,10110,257832],["2026-06-10",10120,12240,10020,10730,1383300],["2026-06-11",10620,11990,10010,11190,843685],["2026-06-12",11730,13030,11450,12200,1129611],["2026-06-15",12320,13030,11950,12560,773423],["2026-06-16",12590,12600,11200,11340,791441],["2026-06-17",11460,11540,11060,11170,252627],["2026-06-18",11200,11270,10400,11200,197033],["2026-06-19",11320,11800,10400,10950,234617],["2026-06-22",10900,11250,10500,10570,243965],["2026-06-23",10590,10760,9390,9420,547146],["2026-06-24",9460,9710,9140,9210,224695],["2026-06-25",9490,9510,9060,9070,116664],["2026-06-26",8720,9080,8000,8200,487348],["2026-06-29",8200,9200,8200,9040,216723],["2026-06-30",9170,9310,8710,8860,208652],["2026-07-01",8950,9190,8660,8850,205362],["2026-07-02",8860,8960,8320,8500,194797],["2026-07-03",8380,8500,7950,8250,338671],["2026-07-06",8310,8350,7830,8050,143023],["2026-07-07",8090,8180,7700,7900,139114],["2026-07-08",7670,7910,7210,7500,203491],["2026-07-09",7500,7830,7280,7680,208819],["2026-07-10",7680,8180,7680,7900,164393],["2026-07-13",8100,8370,7500,7530,195479],["2026-07-14",7580,7800,7000,7270,168450],["2026-07-15",7600,7740,7410,7670,85058],["2026-07-16",7600,7660,7080,7200,152950],["2026-07-20",7020,7080,6820,6890,138450],["2026-07-21",6830,6920,6540,6830,208517],["2026-07-22",7020,7290,7010,7020,117705],["2026-07-23",7050,7370,6980,7320,85872],["2026-07-24",7120,7260,6970,7050,89967],["2026-07-27",7200,7230,6880,6990,165192],["2026-07-28",6740,6850,6360,6370,242706],["2026-07-29",6400,6640,5330,5590,485828],["2026-07-30",5580,6030,5550,5700,150548],["2026-07-31",5900,6470,5900,6430,151568],["2026-08-03",6220,6660,6160,6400,110225],["2026-08-04",6460,6840,6460,6770,59057],["2026-08-05",7110,7110,6820,7060,78604],["2026-08-06",7050,7190,6860,7100,75017],["2026-08-07",7620,7680,7120,7400,172030],["2026-08-10",7500,7760,7320,7740,94014],["2026-08-11",7680,7780,7510,7640,86672],["2026-08-12",7720,7800,7530,7750,64665],["2026-08-13",7880,7990,7740,7820,84311],["2026-08-14",7990,8110,7720,8030,84113],["2026-08-18",7980,7980,7480,7550,141418],["2026-08-19",7230,7530,7130,7350,89145],["2026-08-20",7350,7670,7290,7420,63283],["2026-08-21",7400,7400,6970,7030,89385],["2026-08-24",7220,7540,7220,7370,71107],["2026-08-25",7510,7510,6990,7410,61854],["2026-08-26",7430,7600,7250,7540,46405],["2026-08-27",7540,8020,7540,7810,139864],["2026-08-28",7760,7980,7720,7850,68083],["2026-08-31",7850,8090,7700,8010,105339],["2026-09-01",8150,8210,7870,7950,78457],["2026-09-02",7750,7900,7100,7500,66100],["2026-09-03",7700,7700,7270,7380,49331],["2026-09-04",7550,7670,7430,7450,39990],["2026-09-07",7650,7650,7250,7260,150879],["2026-09-08",7330,7420,7190,7250,55707],["2026-09-09",7250,7970,7230,7520,102893],["2026-09-10",7510,7680,7350,7560,66768],["2026-09-11",7500,8980,7380,8510,1236304],["2026-09-14",8340,8770,8070,8320,493713],["2026-09-15",8410,8590,7950,8250,589730],["2026-09-16",8250,8400,7760,7900,192615],["2026-09-17",7920,7990,7710,7930,81427],["2026-09-18",8130,8300,7960,8290,117494],["2026-09-21",8140,8300,7700,7950,252081],["2026-09-22",7990,8030,7680,7760,166615],["2026-09-23",7880,7890,7550,7620,129080],["2026-09-28",7650,8180,7640,7760,200973],["2026-09-29",7710,7820,7560,7680,112081],["2026-09-30",7690,7990,7680,7950,104733],["2026-10-01",7900,8150,7860,8150,103180],["2026-10-02",8140,8880,8090,8730,336348],["2026-10-06",8860,9570,8830,9390,583788],["2026-10-07",9260,9320,8820,8820,122398],["2026-10-08",9000,9010,8590,8640,233923],["2026-10-12",8700,8720,7980,8120,218417],["2026-10-13",7680,8170,7550,8150,163845],["2026-10-14",8180,8980,8140,8840,294981],["2026-10-15",8600,8600,7850,7870,221283],["2026-10-16",8120,8160,7810,7990,150586]];
+const NEWS = [{"date":"2025-01-20","title":"전지박 판매 60% 증가","summary":"캐즘 속 24년 전지박 판매량 60%↑ · 주가 장중 25% 급등","url":"https://thecommoditiesnews.com/news/articleView.html?idxno=8667","source":"더코모디티뉴스","tag":"주가"},{"date":"2025-02-06","title":"24년 실적 발표","summary":"매출 5,710억(+33%) · 영업손실 544억 적자 축소","url":"https://mobile.newsis.com/view/NISX20250206_0003055523","source":"뉴시스","tag":"재무"},{"date":"2025-03-13","title":"동박 CFL 매각 착수","summary":"룩셈부르크 동박법인 CFL 매각 추진","url":"https://dealsite.co.kr/articles/137959","source":"딜사이트","tag":"지배구조"},{"date":"2025-03-26","title":"ACC 2차 공급계약","summary":"유럽 배터리사 ACC와 전지박 2차 공급계약","url":"https://www.mt.co.kr/industry/2025/03/26/2025032608584842660","source":"머니투데이","tag":"전지박"},{"date":"2025-04-28","title":"중화권 배터리사 계약","summary":"유럽 거점 중화권 배터리사와 중장기 계약 · 주가 14%↑","url":"https://www.ajunews.com/view/20250428101417545","source":"아주경제","tag":"전지박"},{"date":"2025-05-28","title":"그린인광호스트 승인","summary":"OLED 그린 호스트 고객 승인 · 양산 준비","url":"https://thecommoditiesnews.com/news/articleView.html?idxno=9272","source":"더코모디티뉴스","tag":"OLED"},{"date":"2025-06-02","title":"CATL 공급계약","summary":"헝가리산 전지박 CATL 유럽공장 공급 · 26년 개시","url":"https://www.snmnews.com/news/articleView.html?idxno=553386","source":"철강금속신문","tag":"전지박"},{"date":"2025-07-30","title":"CFL 2,784억 매각계약","summary":"동박법인 CFL 중국 업체에 매각 결정 · 이후 FDI 심사로 무산","url":"https://www.news1.kr/industry/electronics/5863614","source":"뉴스1","tag":"지배구조"},{"date":"2025-08-25","title":"유럽 고객사 추가","summary":"유럽 글로벌 배터리셀사와 전지박 공급 합의","url":"https://v.daum.net/v/20250825070211083","source":"뉴시스","tag":"전지박"},{"date":"2025-08-29","title":"SK넥실리스 추가 소송","summary":"美서 영업비밀 침해 책임 추가 제기","url":"https://www.hankyung.com/article/202508290206i","source":"한국경제","tag":"소송"},{"date":"2025-09-26","title":"ACC 단독승인 추진","summary":"ACC향 6㎛ 고강도 하이엔드 전지박 단독 승인","url":"https://thecommoditiesnews.com/news/articleView.html?idxno=9835","source":"더코모디티뉴스","tag":"전지박"},{"date":"2025-09-30","title":"북미 배터리사 신규계약","summary":"북미 원통형 배터리사와 전지박 계약","url":"https://dealsite.co.kr/articles/149028","source":"딜사이트","tag":"전지박"},{"date":"2025-10-15","title":"美 특허소송 추가 판결","summary":"SK넥실리스와 특허소송 쟁점 2건 추가 판결","url":"https://www.ddaily.co.kr/page/view/2025101510131722484","source":"디지털데일리","tag":"소송"},{"date":"2025-11-12","title":"ESS 집중 · 상한가","summary":"동박 매각 후 북미 ESS 전지박 집중 계획 · 52주 신고가","url":"https://www.heraldk.com/article/2025111123585640750","source":"헤럴드경제","tag":"주가"},{"date":"2025-11-26","title":"中 배터리사 2만t 계약","summary":"헝가리 고객 8곳 달성 · 中 배터리사 2만t 계약","url":"https://www.ggilbo.com/news/articleView.html?idxno=1126544","source":"금강일보","tag":"전지박"},{"date":"2025-11-26","title":"수은 캐나다공장 지원","summary":"수은·공급망기금 캐나다 공장에 2억달러 지원","url":"https://www.heraldk.com/article/2025112621542547837","source":"헤럴드경제","tag":"재무"},{"date":"2026-01-22","title":"CFL 재매각 SPA","summary":"기존 계약 해제 후 CFL 지분 전량 약 3,014억 SPA","url":"https://www.newspim.com/news/view/20260122001082","source":"뉴스핌","tag":"지배구조"},{"date":"2026-01-26","title":"헝가리·캐나다 증자","summary":"헝가리 587억 · 캐나다 1,181억 유상증자","url":"https://www.businesspost.co.kr/BP?command=article_view&num=428039","source":"비즈니스포스트","tag":"재무"},{"date":"2026-02-05","title":"25년 사상 최대 매출","summary":"매출 6,164억 최대 · 영업적자는 확대","url":"https://www.mt.co.kr/industry/2026/02/05/2026020513541377840","source":"머니투데이","tag":"재무"},{"date":"2026-03-19","title":"함열 OLED 공장 가동","summary":"익산 함열 신공장 3월 본격 생산 · CAPA 2배","url":"https://www.finance-scope.com/article/view/scp202603190009","source":"파이낸스스코프","tag":"OLED"},{"date":"2026-03-20","title":"CATL 양산공급 개시","summary":"CATL 등 신규 고객 2곳 양산 · 하반기 물량 2배","url":"https://www.mt.co.kr/industry/2026/03/20/2026032010524878023","source":"머니투데이","tag":"전지박"},{"date":"2026-04-21","title":"전지박 성장 전환 전망","summary":"증권가 전지박 매출 반등 리포트 · 주가 급등","url":"https://news.nate.com/view/20260421n08850","source":"이데일리","tag":"주가"},{"date":"2026-04-28","title":"동박사업 매각 완료","summary":"CFL 100% 스카이레이크 펀드에 약 3,000억 매각","url":"https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202604280363","source":"한국경제TV","tag":"지배구조"},{"date":"2026-04-28","title":"밸류업 계획 공시","summary":"글로벌 핵심 공급자 지위 확대 목표 제시","url":"https://www.heraldk.com/article/2026042816301655829","source":"헤럴드경제","tag":"재무"},{"date":"2026-05-04","title":"헝가리 법인 추가 출자","summary":"매각대금 약 400억 VES Europe 통해 헝가리 투입","url":"https://www.newspim.com/news/view/20260504000058","source":"뉴스핌","tag":"전지박"},{"date":"2026-05-26","title":"美 특허 배심원 패소","summary":"SK넥실리스 특허 5건 침해 인정 평결 · 항소 방침","url":"https://www.ddaily.co.kr/page/view/2026052616265624125","source":"디지털데일리","tag":"소송"},{"date":"2026-06-04","title":"일본계 배터리사 공급","summary":"3월부터 일본계 배터리사에 하이엔드 전지박 양산","url":"https://view.asiae.co.kr/article/2026060409063087978","source":"아시아경제","tag":"전지박"},{"date":"2026-06-10","title":"캐나다 기지 부각","summary":"북미 현지화 기대감 · 주가 17%↑","url":"https://www.edaily.co.kr/News/Read?newsId=03198006645480408&mediaCodeNo=257","source":"이데일리","tag":"주가"},{"date":"2026-07-24","title":"2분기 실적 발표","summary":"매출 1,019억(+31%) · 영업손실 213억 · 동박 중단사업","url":"https://www.fnnews.com/news/202607241525349980","source":"파이낸셜뉴스","tag":"재무"},{"date":"2026-07-27","title":"목표주가 하향","summary":"헝가리 재가동·전력비·소송 리스크 · 2만→1.7만원","url":"https://www.businesspost.co.kr/BP?command=article_view&num=443176","source":"비즈니스포스트","tag":"주가"},{"date":"2026-08-13","title":"K-동박 시대 재도래","summary":"북미 탈중국·ESS 확대로 수주 문의 증가","url":"https://www.mt.co.kr/industry/2026/08/14/2026081319530561765","source":"머니투데이","tag":"전지박"},{"date":"2026-09-11","title":"가동률 회복 급반등","summary":"가동률 회복·북미 공장 기대 · 12.6% 급등","url":"https://www.hankyung.com/article/202609119110i","source":"한국경제","tag":"주가"},{"date":"2026-09-16","title":"동박업계 한파 속 차별화","summary":"매각대금 3,000억 확보 · 북미 최초 캐나다 공장","url":"https://www.ceoscoredaily.com/page/view/2026091617163962338","source":"CEO스코어데일리","tag":"전지박"}];
+const MOVES = [{"date":"2025-01-20","chg":20.5,"title":"전지박 판매 60%↑","reason":"24년 전지박 판매량 급증 · 中 경쟁사 증치세 환급 폐지로 가격 경쟁 완화 기대","url":"https://thecommoditiesnews.com/news/articleView.html?idxno=8667"},{"date":"2025-11-12","chg":29.9,"title":"상한가 · ESS 올인","reason":"동박 CFL 매각 후 북미 ESS 전지박 집중 전략 · 유럽 신규 고객 공급 계획","url":"https://www.heraldk.com/article/2025111123585640750"},{"date":"2026-04-21","chg":26.1,"title":"전지박 성장 전환 리포트","reason":"증권가 전지박 매출 반등 전망 → 목표가 상향 · 4/28 동박 매각 완료·밸류업 공시로 기간 고점 16,150원","url":"https://news.nate.com/view/20260421n08850"},{"date":"2026-04-30","chg":-15.2,"title":"단기 급등 차익실현","reason":"1주 40%+ 급등 뒤 매각 완료 재료 소멸 · 차익 매물 (추정)","url":""},{"date":"2026-05-27","chg":-13,"title":"美 특허소송 패소 평결","reason":"텍사스 배심원 SK넥실리스 특허 5건 침해 인정 · 손해배상 불확실성","url":"https://www.ddaily.co.kr/page/view/2026052616265624125"},{"date":"2026-05-29","chg":25.7,"title":"낙폭 되돌림","reason":"소송 쇼크 후 외국인·기관 동반 순매수 반등 (추정)","url":"https://news.nate.com/view/20260529n20706"},{"date":"2026-07-29","chg":-12.2,"title":"기간 최저 5,590원","reason":"2Q 기대 하회 · 목표가 하향(헝가리 재가동·전력비·소송) 약세 연장","url":"https://www.businesspost.co.kr/BP?command=article_view&num=443176"},{"date":"2026-09-11","chg":12.6,"title":"가동률 회복 반등","reason":"헝가리 가동률 회복 · 캐나다 공장 기대 · 외국인·기관 매수","url":"https://www.hankyung.com/article/202609119110i"}];
+
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = n => n.toLocaleString('ko-KR');
+Chart.defaults.font.family = '"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif';
+Chart.defaults.font.size = 12;
+
+function C(){ return {blue:css('--blue'),b2:css('--blue-2'),b3:css('--blue-3'),b4:css('--blue-4'),green:css('--green'),red:css('--red'),ink:css('--ink'),ink3:css('--ink3'),ink4:css('--ink4'),line:css('--line2'),card:css('--card')}; }
+
+/* value labels plugin */
+const labelPlugin = {
+  id:'vlabels',
+  afterDatasetsDraw(chart){
+    const {ctx} = chart; const c = C();
+    chart.data.datasets.forEach((ds,i)=>{
+      if(!ds._label) return;
+      const meta = chart.getDatasetMeta(i); if(meta.hidden) return;
+      meta.data.forEach((el,j)=>{
+        const v = ds._label === 'total' ? ds._totals[j] : ds.data[j];
+        if(v==null) return;
+        ctx.save(); ctx.font='700 11.5px Pretendard,sans-serif'; ctx.textAlign='center';
+        if(ds._label==='total'){ ctx.fillStyle=c.ink; ctx.fillText(fmt(Math.round(v)), el.x, el.y-6); }
+        else if(ds._label==='op'){ ctx.fillStyle = v>=0?c.green:c.red; ctx.fillText(fmt(Math.round(v)), el.x, v>=0? el.y-6 : el.y+14); }
+        else if(ds._label==='pct'){ ctx.fillStyle=c.ink; ctx.font='600 11px Pretendard,sans-serif'; ctx.fillText(v.toFixed(1)+'%', el.x, el.y-9); }
+        ctx.restore();
+      });
+    });
+  }
+};
+
+function finChart(id, labels, segs, op, total){
+  const c = C();
+  const margin = op.map((v,i)=> v/total[i]*100);
+  const segColors = [c.blue,c.b2,c.b3,c.b4];
+  const ds = segs.map((s,k)=>({type:'bar',label:s.name,data:s.data,backgroundColor:segColors[k],stack:'rev',yAxisID:'y',borderRadius:2,barPercentage:.9,categoryPercentage:.7}));
+  ds[ds.length-1]._label='total'; ds[ds.length-1]._totals=total;
+  ds.push({type:'bar',label:'영업이익',data:op,backgroundColor:op.map(v=>v>=0?c.green:c.red),stack:'op',yAxisID:'y',borderRadius:2,barPercentage:.9,categoryPercentage:.7,_label:'op'});
+  ds.push({type:'line',label:'영업이익률',data:margin,yAxisID:'y2',borderColor:c.ink,backgroundColor:c.card,borderWidth:2,pointRadius:4,pointBorderWidth:2,tension:.25,_label:'pct',order:-1});
+  return new Chart(document.getElementById(id),{
+    data:{labels,datasets:ds},
+    plugins:[labelPlugin],
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      layout:{padding:{top:18}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:t=> t.dataset.label+' '+(t.dataset.yAxisID==='y2'? t.raw.toFixed(1)+'%' : fmt(Math.round(t.raw))+'억')}}},
+      scales:{
+        x:{stacked:true,grid:{display:false},ticks:{color:c.ink3,font:{weight:600}}},
+        y:{stacked:true,grid:{color:c.line},ticks:{color:c.ink4,callback:v=>fmt(v)},title:{display:true,text:'억원',color:c.ink4}},
+        y2:{position:'right',grid:{display:false},ticks:{color:c.ink4,callback:v=>v+'%'},suggestedMin:-60,suggestedMax:20}
+      }}
+  });
+}
+
+/* annual: revenue from portal (bio incl. 2021), segment split from IR */
+finChart('cYear',['2021','2022','2023','2024','2025'],[
+  {name:'전지박',data:[378,1127,1546,2483,1837]},
+  {name:'OLED',data:[950,1251,1112,1264,1263]},
+  {name:'동박',data:[2036,1805,1636,1962,3061]},
+  {name:'바이오',data:[440,null,null,null,null]},
+],[50.0,-496.7,-732.1,-544.2,-733.4],[3803.3,4182.9,4294.2,5709.5,6160.8]);
+
+finChart('cQtr',['25.2Q','25.3Q','25.4Q','26.1Q','26.2Q'],[
+  {name:'전지박',data:[460,364,415,617,750]},
+  {name:'OLED',data:[318,321,327,264,269]},
+],[-208,-113,-287,-324,-213],[778,685,742,881,1019]);
+
+/* ownership donut */
+(function(){ const c=C(); new Chart(document.getElementById('cOwn'),{type:'doughnut',data:{labels:['스카이레이크 측','소액주주','기타'],datasets:[{data:[53.3,45.3,1.4],backgroundColor:[c.blue,c.b3,css('--line')],borderColor:c.card,borderWidth:3}]},options:{cutout:'68%',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:t=>t.label+' '+t.raw+'%'}}}}}); })();
+
+/* ---------- news ---------- */
+(function(){
+  const tagCls = {'전지박':'','OLED':'a','재무':'r','지배구조':'k','주가':'g','소송':'r'};
+  const byM = {};
+  NEWS.slice().sort((a,b)=>a.date<b.date?1:-1).forEach(n=>{ const m=n.date.slice(0,7); (byM[m]=byM[m]||[]).push(n); });
+  const months = Object.keys(byM).sort().reverse();
+  const btns = document.getElementById('monthBtns'), list = document.getElementById('newsList');
+  const mk = (m)=>{ const [y,mm]=m.split('-'); return `${y.slice(2)}.${mm}`; };
+  btns.innerHTML = `<button class="on" data-m="all">전체</button>` + ['2026','2025'].map(y=>`<button data-m="${y}">${y}년</button>`).join('');
+  function render(f){
+    list.innerHTML = months.filter(m=> f==='all' || m.startsWith(f)).map(m=>{
+      const [y,mm]=m.split('-');
+      return `<div class="mgroup"><h4>${y}년 ${+mm}월</h4><div class="ncards">${byM[m].map(n=>{
+        const inner = `<div class="top"><span class="pill ${tagCls[n.tag]??''}">${n.tag}</span><span>${n.date.replace(/-/g,'.')}</span></div><b>${n.title}</b><p>${n.summary}</p><span class="src">${n.source}${n.url?' ↗':''}</span>`;
+        return n.url ? `<a class="ncard" href="${n.url}" target="_blank" rel="noopener">${inner}</a>` : `<div class="ncard">${inner}</div>`;
+      }).join('')}</div></div>`;
+    }).join('');
+  }
+  btns.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; btns.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); render(b.dataset.m); });
+  render('all');
+})();
+
+/* ---------- stock ---------- */
+(function(){
+  const rows = PX.map(r=>({d:r[0],o:r[1],h:r[2],l:r[3],c:r[4],v:r[5]}));
+  rows.forEach((r,i)=>{ r.chg = i? (r.c/rows[i-1].c-1)*100 : 0; });
+  const last = rows[rows.length-1], first = rows[0];
+  const hi = rows.reduce((a,b)=>b.c>a.c?b:a), lo = rows.reduce((a,b)=>b.c<a.c?b:a);
+  const ytd = rows.find(r=>r.d>='2026-01-01');
+  const prevYE = rows.filter(r=>r.d<'2026-01-01').pop();
+  document.getElementById('pxKpi').innerHTML = [
+    ['현재가 (10/16)', fmt(last.c)+'원', `<em class="${last.chg>=0?'up':'dn'}">전일 ${last.chg>=0?'+':''}${last.chg.toFixed(2)}%</em>`],
+    ['기간 최고 (종가)', fmt(hi.c)+'원', `<em>${hi.d.replace(/-/g,'.')}</em>`],
+    ['기간 최저 (종가)', fmt(lo.c)+'원', `<em>${lo.d.replace(/-/g,'.')}</em>`],
+    ['26년 연초 대비', ((last.c/prevYE.c-1)*100>=0?'+':'')+((last.c/prevYE.c-1)*100).toFixed(1)+'%', `<em>25년말 ${fmt(prevYE.c)}원 → ${fmt(last.c)}원</em>`],
+  ].map(k=>`<div class="kt"><span>${k[0]}</span><b class="num">${k[1]}</b>${k[2]}</div>`).join('');
+  document.getElementById('heroPx').textContent = fmt(last.c)+'원';
+
+  const mvMap = {}; MOVES.forEach(m=> mvMap[m.date]=m);
+  const c = C();
+  let chart;
+  function draw(sub){
+    const pts = sub.map(r=> mvMap[r.d] ? r.c : null);
+    const ptCol = sub.map(r=> mvMap[r.d] ? (mvMap[r.d].chg>=0? c.green : c.red) : 'transparent');
+    const data = {labels:sub.map(r=>r.d), datasets:[
+      {type:'line',label:'종가',data:sub.map(r=>r.c),borderColor:c.blue,backgroundColor:c.blue+'22',fill:true,borderWidth:1.8,pointRadius:0,tension:.15,yAxisID:'y',order:2},
+      {type:'scatter',label:'이벤트',data:pts,pointRadius:7,pointHoverRadius:9,pointBackgroundColor:ptCol,pointBorderColor:c.card,pointBorderWidth:2,yAxisID:'y',order:0},
+      {type:'bar',label:'거래량',data:sub.map(r=>r.v),backgroundColor:c.b3,yAxisID:'yv',order:3,barPercentage:1,categoryPercentage:1},
+    ]};
+    if(chart){ chart.data = data; chart.update(); return; }
+    chart = new Chart(document.getElementById('cPx'),{data,options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{filter:t=>t.raw!=null,callbacks:{
+        title:t=>t[0].label.replace(/-/g,'.'),
+        label:t=> t.dataset.label==='이벤트'? null : t.dataset.label+' '+fmt(t.raw)+(t.dataset.label==='종가'?'원':'주'),
+        afterBody:t=>{ const m=mvMap[t[0].label]; return m? ['', (m.chg>=0?'▲ ':'▼ ')+m.title, ...wrap(m.reason,28)] : []; }
+      }}},
+      scales:{x:{grid:{display:false},ticks:{color:c.ink4,maxTicksLimit:10,maxRotation:0,callback:function(v){const l=this.getLabelForValue(v);return l.slice(2,7).replace('-','.');}}},
+        y:{grid:{color:c.line},ticks:{color:c.ink4,callback:v=>fmt(v)}},
+        yv:{position:'right',grid:{display:false},ticks:{display:false},max: Math.max(...sub.map(r=>r.v))*4}}}});
+  }
+  function wrap(s,n){ const out=[]; let cur=''; s.split(' ').forEach(w=>{ if((cur+' '+w).trim().length>n){out.push(cur.trim());cur=w;} else cur+=' '+w; }); if(cur.trim()) out.push(cur.trim()); return out; }
+  const ranges = {all:()=>rows, '2025':()=>rows.filter(r=>r.d<'2026'), '2026':()=>rows.filter(r=>r.d>='2026'), '6m':()=>rows.filter(r=>r.d>='2026-04-16')};
+  draw(rows);
+  document.getElementById('rng').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; document.querySelectorAll('#rng button').forEach(x=>x.classList.toggle('on',x===b)); draw(ranges[b.dataset.r]()); });
+
+  document.getElementById('moves').innerHTML = MOVES.map(m=>`<div class="mv"><div class="chg ${m.chg>=0?'u':'d'}">${m.chg>=0?'+':''}${m.chg.toFixed(1)}%<small>${m.date.slice(2).replace(/-/g,'.')}</small></div><div><b>${m.title}</b><p>${m.reason}</p>${m.url?`<a href="${m.url}" target="_blank" rel="noopener">관련 기사 ↗</a>`:''}</div></div>`).join('');
+
+  document.getElementById('pxN').textContent = rows.length;
+  document.querySelector('#pxTbl tbody').innerHTML = rows.slice().reverse().map(r=>`<tr><td>${r.d.replace(/-/g,'.')}</td><td>${fmt(r.o)}</td><td>${fmt(r.h)}</td><td>${fmt(r.l)}</td><td><b>${fmt(r.c)}</b></td><td class="${r.chg>0?'up':r.chg<0?'dn':''}">${r.chg>0?'+':''}${r.chg.toFixed(2)}%</td><td>${fmt(r.v)}</td></tr>`).join('');
+  document.getElementById('dl').addEventListener('click',()=>{
+    const csv = '﻿일자,시가,고가,저가,종가,등락률(%),거래량\n' + rows.map(r=>[r.d,r.o,r.h,r.l,r.c,r.chg.toFixed(2),r.v].join(',')).join('\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='solus_336370_daily_2025-2026.csv'; a.click();
+  });
+})();
+
+/* nav highlight */
+(function(){
+  const links=[...document.querySelectorAll('#nav a')];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)); } }),{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('main section').forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>
