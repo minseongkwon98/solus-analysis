@@ -738,8 +738,13 @@ const labelPlugin = {
             ctx.fillStyle = dark? '#fff' : c.ink;
             ctx.font='600 10.5px Pretendard,sans-serif'; ctx.fillText(ds.label, el.x, mid-7);
             ctx.font='800 12px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid+7);
-          } else if(w<34 && h>=15){
-            ctx.fillStyle = dark? '#fff' : c.ink; ctx.font='800 11px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid);
+          } else if(h>=13 && (()=>{ /* 얇은 칸: '이름 값' 한 줄을 막대 폭에 맞춰 안쪽에 표시 */
+            ctx.fillStyle = dark? '#fff' : c.ink;
+            for(const t of [ds.label+' '+fmt(v), fmt(v)]) for(let fs=Math.min(11,h-3); fs>=8; fs-=.5){
+              ctx.font=`800 ${fs}px Pretendard,sans-serif`;
+              if(ctx.measureText(t).width <= w-4){ ctx.fillText(t, el.x, mid); return true; }
+            }
+            ctx.font='800 9px Pretendard,sans-serif'; ctx.fillText(fmt(v), el.x, mid); return true; })()){
           } else {
             ctx.fillStyle = c.ink3; ctx.font='700 11px Pretendard,sans-serif';
             const txt = ds.label+' '+fmt(v), tw = ctx.measureText(txt).width, lx = el.x-w/2-4;
@@ -768,7 +773,7 @@ function finChart(id, labels, segs, op, total){
   const c = C();
   const margin = op.map((v,i)=> v/total[i]*100);
   const segColors = [c.blue,c.b2,c.b3,c.b4], darkSeg=[true,false,false,false];
-  const bar = {barPercentage:.82,categoryPercentage:.62,maxBarThickness:64};
+  const bar = {barPercentage:.88,categoryPercentage:.72,maxBarThickness:64};
   const ds = segs.map((s,k)=>({type:'bar',label:s.name,data:s.data,backgroundColor:segColors[k],stack:'rev',yAxisID:'y',borderRadius:0,_seg:true,_dark:darkSeg[k],...bar}));
   ds[0]._totals=total;
   ds.push({type:'bar',label:'영업이익',data:op,backgroundColor:op.map(v=>v>=0?c.green:c.red),stack:'op',yAxisID:'y',borderRadius:2,_label:'op',...bar});
